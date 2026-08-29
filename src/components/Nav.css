@@ -17,10 +17,17 @@
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.01em;
   font-size: 1.1rem;
+}
+
+.nav-logo {
+  height: 30px;
 }
 
 .nav-links {

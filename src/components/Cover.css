@@ -82,6 +82,11 @@
   text-align: center;
 }
 
+.cover-logo {
+  height: 88px;
+  margin-bottom: 0.4rem;
+}
+
 .cover-eyebrow {
   font-size: 0.8rem;
   letter-spacing: 0.2em;

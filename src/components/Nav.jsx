@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import Logo from './Logo'
 import './Nav.css'
 
 const links = [
@@ -14,7 +15,8 @@ export default function Nav() {
     <header className="nav">
       <div className="nav-inner">
         <NavLink to="/" className="nav-brand font-display" end>
-          Cindy Zheng
+          <Logo className="nav-logo" />
+          <span>Cindy Zheng</span>
         </NavLink>
         <nav className="nav-links">
           {links.map((link) => (

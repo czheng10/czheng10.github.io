@@ -1,9 +1,11 @@
+import Logo from './Logo'
 import './Cover.css'
 
 export default function Cover({ entered, onEnter }) {
   return (
     <div className={'cover-card' + (entered ? ' cover-card-revealed' : '')}>
       <div className="cover-content">
+        <Logo className="cover-logo" />
         <span className="cover-eyebrow">Welcome to</span>
         <span className="cover-name font-display">STUDIO</span>
         <span className="cover-byline">by Cindy Zheng</span>
