@@ -3,15 +3,20 @@ import Cover from '../components/Cover.jsx'
 import Menu from '../components/Menu.jsx'
 import './Home.css'
 
-// The landing experience: a full-screen cover you tap through, which
-// reveals the café "menu" — each item is a page of the site.
+// The landing experience: a cover card sits on top of the menu card.
+// Tapping it drops the cover behind (z-index swap + a swooshing
+// slide/rotate) while the menu simultaneously grows/settles forward —
+// the two movements together sell the "cards swapping depth" illusion
+// much better than either one animating alone.
 export default function Home() {
   const [entered, setEntered] = useState(false)
 
   return (
     <div className="landing">
-      <Cover entered={entered} onEnter={() => setEntered(true)} />
-      <Menu visible={entered} />
+      <div className="landing-stack">
+        <Menu active={entered} />
+        <Cover entered={entered} onEnter={() => setEntered(true)} />
+      </div>
     </div>
   )
 }

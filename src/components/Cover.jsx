@@ -2,16 +2,22 @@ import './Cover.css'
 
 export default function Cover({ entered, onEnter }) {
   return (
-    <div
-      className={'cover' + (entered ? ' cover-hidden' : '')}
-      aria-hidden={entered}
-    >
-      <button className="cover-button" onClick={onEnter}>
-        <span className="cover-eyebrow">welcome to</span>
-        <span className="cover-name font-display">Cindy Zheng</span>
-        <span className="cover-tagline">a little café of code &amp; creativity</span>
-        <span className="cover-prompt">tap to see the menu</span>
-      </button>
+    <div className={'cover-card' + (entered ? ' cover-card-revealed' : '')}>
+      <div className="cover-content">
+        <span className="cover-eyebrow">Welcome to</span>
+        <span className="cover-name font-display">STUDIO</span>
+        <span className="cover-byline">by Cindy Zheng</span>
+        <button
+          type="button"
+          className="cover-prompt"
+          onClick={onEnter}
+          disabled={entered}
+          aria-hidden={entered}
+          tabIndex={entered ? -1 : 0}
+        >
+          Read the Menu
+        </button>
+      </div>
     </div>
   )
 }

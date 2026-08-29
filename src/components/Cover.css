@@ -1,63 +1,134 @@
-.cover {
+.cover-card {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg);
-  transition: opacity var(--transition-slow), transform var(--transition-slow), visibility var(--transition-slow);
+  /* Cream instead of the pale blue-tint surface — needs to visibly
+     stand apart from the blue background, not blend into it. */
+  background: var(--color-emphasis-2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(0deg) translate(0, 0) scale(1);
+  /* Plays once when the page first loads (before .cover-card-revealed
+     is ever added, so it never replays or fights with the shuffle). */
+  animation: cover-materialize 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.cover-hidden {
-  opacity: 0;
-  transform: scale(1.04);
-  visibility: hidden;
-  pointer-events: none;
+@keyframes cover-materialize {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) translate(0, 0) scale(0.85);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) translate(0, 0) scale(1);
+    filter: blur(0);
+  }
 }
 
-.cover-button {
-  all: unset;
-  cursor: pointer;
+/* A proper swoosh: lift + tilt as if picked up, flip behind the menu
+   partway through, swing past its resting spot with some rotation,
+   then settle — rather than a plain straight-line slide. */
+.cover-card-revealed {
+  animation: cover-shuffle 1150ms linear forwards;
+}
+
+/* A shuffle: the cover slides OUT to the left (still on top, so the
+   two cards visibly separate), flips behind right at the widest point
+   of the split, then comes back in toward center to settle as the
+   peeking backing card — mirrored by the menu doing the same thing to
+   the right, see menu-shuffle in Menu.css. */
+@keyframes cover-shuffle {
+  0% {
+    transform: rotate(0deg) translate(0, 0) scale(1);
+    box-shadow: var(--shadow-soft);
+    z-index: 3;
+  }
+  35% {
+    transform: rotate(-10deg) translate(-38%, -3%) scale(1.03);
+    box-shadow: 0 16px 32px rgba(30, 34, 37, 0.24);
+    z-index: 3;
+  }
+  36% {
+    z-index: 1;
+  }
+  70% {
+    transform: rotate(-7deg) translate(-16%, 8%) scale(0.96);
+    box-shadow: 0 4px 14px rgba(30, 34, 37, 0.12);
+    z-index: 1;
+  }
+  100% {
+    transform: rotate(-5deg) translate(-5%, 12%) scale(0.94);
+    box-shadow: 0 4px 14px rgba(30, 34, 37, 0.12);
+    opacity: 0.92;
+    z-index: 1;
+  }
+}
+
+.cover-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 3rem 4rem;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 2.5rem 2rem;
   text-align: center;
 }
 
 .cover-eyebrow {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-text-soft);
 }
 
 .cover-name {
-  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-size: clamp(2rem, 7vw, 2.6rem);
+  letter-spacing: 0.04em;
   color: var(--color-text);
+}
+
+.cover-byline {
+  color: var(--color-text-soft);
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
 }
 
 .cover-tagline {
   color: var(--color-text-soft);
   font-style: italic;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
 }
 
 .cover-prompt {
-  margin-top: 1.75rem;
-  font-size: 0.8rem;
+  all: unset;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text);
   border: 1px solid var(--color-text);
   border-radius: var(--radius-lg);
-  padding: 0.6rem 1.4rem;
+  padding: 0.55rem 1.2rem;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-.cover-button:hover .cover-prompt {
-  background: var(--color-emphasis);
-  color: var(--color-on-emphasis);
+.cover-prompt:hover:not(:disabled) {
+  background: var(--color-text);
+  color: var(--color-emphasis-2);
+}
+
+.cover-prompt:disabled {
+  cursor: default;
+  opacity: 0.7;
 }
