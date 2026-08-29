@@ -15,3 +15,19 @@
   max-width: 360px;
   height: 640px;
 }
+
+.landing-art-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.landing-stack {
+  z-index: 1;
+}

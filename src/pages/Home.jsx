@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Cover from '../components/Cover.jsx'
 import Menu from '../components/Menu.jsx'
+import LandingArt from '../components/LandingArt.jsx'
 import './Home.css'
 
 // The landing experience: a cover card sits on top of the menu card.
@@ -13,6 +14,7 @@ export default function Home() {
 
   return (
     <div className="landing">
+      <LandingArt className="landing-art-bg" />
       <div className="landing-stack">
         <Menu active={entered} />
         <Cover entered={entered} onEnter={() => setEntered(true)} />
