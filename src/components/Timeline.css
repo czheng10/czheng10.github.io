@@ -1,0 +1,137 @@
+.timeline {
+  list-style: none;
+  margin: 2.5rem auto 0;
+  padding: 1rem 0;
+  position: relative;
+  max-width: 640px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-emphasis-soft);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding-bottom: 3.5rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.timeline-item-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 3rem;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 3rem;
+  text-align: left;
+}
+
+.timeline-marker {
+  position: absolute;
+  top: -0.25rem;
+  width: 52px;
+  height: 52px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-emphasis);
+  color: var(--color-on-emphasis);
+  border-radius: var(--blob-radius);
+  box-shadow: 0 0 0 6px var(--color-bg);
+}
+
+.timeline-marker-alt {
+  background: var(--color-emphasis-2);
+  border-radius: var(--blob-radius-alt);
+  color: var(--color-text);
+}
+
+.timeline-marker-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.timeline-item:nth-child(odd) .timeline-marker {
+  right: 0;
+  transform: translateX(50%);
+}
+
+.timeline-item:nth-child(even) .timeline-marker {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.timeline-card {
+  display: inline-block;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-title {
+  margin: 0 0 0.15rem;
+  font-size: 1.1rem;
+}
+
+.timeline-org {
+  color: var(--color-text-soft);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.timeline-description {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Below this width, collapse to a single left-aligned column — a
+   zigzag layout gets cramped on narrow/mobile screens. */
+@media (max-width: 640px) {
+  .timeline::before {
+    left: 26px;
+    transform: none;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    width: 100%;
+    left: 0;
+    padding-left: 3.5rem;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-marker,
+  .timeline-item:nth-child(even) .timeline-marker {
+    left: 0;
+    right: auto;
+    transform: none;
+  }
+}

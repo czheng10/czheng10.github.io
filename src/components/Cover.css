@@ -1,0 +1,63 @@
+.cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  transition: opacity var(--transition-slow), transform var(--transition-slow), visibility var(--transition-slow);
+}
+
+.cover-hidden {
+  opacity: 0;
+  transform: scale(1.04);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cover-button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 4rem;
+  text-align: center;
+}
+
+.cover-eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.cover-name {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  color: var(--color-text);
+}
+
+.cover-tagline {
+  color: var(--color-text-soft);
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+.cover-prompt {
+  margin-top: 1.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem 1.4rem;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.cover-button:hover .cover-prompt {
+  background: var(--color-emphasis);
+  color: var(--color-on-emphasis);
+}

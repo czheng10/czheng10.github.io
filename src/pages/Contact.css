@@ -1,0 +1,27 @@
+.contact {
+  padding: 2.5rem 0;
+}
+
+.contact a {
+  color: var(--color-emphasis);
+  font-weight: 600;
+}
+
+.contact-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.contact-links a {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-emphasis-soft);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.contact-links a:hover {
+  background: var(--color-emphasis);
+  color: var(--color-on-emphasis);
+}
