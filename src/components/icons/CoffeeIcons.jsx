@@ -77,15 +77,19 @@ export function Cup(props) {
 
 export const coffeeIcons = [Beans, Grinder, Portafilter, Pitcher, Cup]
 
-// Graduation cap — used for education/certificate entries on the
-// timeline, to set them visually apart from the coffee-making icons
-// used for work roles.
-export function GraduationCap(props) {
+// Open book, with a little steam rising off it (same steam-curl style
+// as the Cup icon) — used for education/certificate entries on the
+// timeline. A graduation cap read as too "academic" against the
+// coffee-making icons used for work roles; a book that's also
+// "brewing" keeps the same illustration language while still reading
+// clearly as education.
+export function Book(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z" />
-      <path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5" />
-      <path d="M20.5 9.5v5.5" />
+      <path d="M4 6c2-1 4.5-1 6 0v12c-1.5-1-4-1-6 0z" />
+      <path d="M16 6c-2-1-4.5-1-6 0v12c1.5-1 4-1 6 0z" />
+      <path d="M9 4.5c.6.8.6 1.4 0 2.2" />
+      <path d="M12.5 4.5c.6.8.6 1.4 0 2.2" />
     </svg>
   )
 }
