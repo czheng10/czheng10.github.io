@@ -5,12 +5,12 @@ export const menuData = [
   {
     to: '/professional',
     label: 'Iced Oat Vanilla Latte',
-    description: 'Tasting notes: business-casual, dependable, a little ambitious.',
+    description: 'Caffeinated, growth-oriented, a little ambitious — this is the career story.',
   },
   {
     to: '/creatives',
     label: 'Iced Matcha Latte',
-    description: 'Tasting notes: creative, earthy, quietly bold.',
+    description: 'Earthy, creative, quietly bold — this is where the artistic sidequests live.',
   },
   {
     to: '/about',
