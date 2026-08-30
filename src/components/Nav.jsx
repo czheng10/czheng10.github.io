@@ -4,7 +4,7 @@ import './Nav.css'
 
 const links = [
   { to: '/', label: 'Menu', end: true },
-  { to: '/professional', label: 'Professional' },
+  { to: '/professional', label: 'Career' },
   { to: '/creatives', label: 'Creatives' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },

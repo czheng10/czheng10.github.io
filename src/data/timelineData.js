@@ -68,4 +68,11 @@ export const timelineData = [
     description:
       'Completed an intensive data structures & algorithms program, earning a Certificate of Achievement.',
   },
+  {
+    date: 'Aug 2021',
+    title: 'Started B.S. in Computer Science and Engineering',
+    org: 'Massachusetts Institute of Technology',
+    type: 'education',
+    description: 'Where it all began.',
+  },
 ]
