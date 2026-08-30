@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className="landing">
-      <LandingArt className="landing-art-bg" />
+      <LandingArt />
       <div className="landing-stack">
         <Menu active={entered} />
         <Cover entered={entered} onEnter={() => setEntered(true)} />
