@@ -4,13 +4,13 @@
 export const menuData = [
   {
     to: '/professional',
-    label: 'The Professional',
-    description: 'A full-bodied blend of code, ambition, and late nights.',
+    label: 'Iced Oat Vanilla Latte',
+    description: 'Tasting notes: business-casual, dependable, a little ambitious.',
   },
   {
     to: '/creatives',
-    label: 'The Creative Pour',
-    description: 'Something more expressive, steeped slow.',
+    label: 'Iced Matcha Latte',
+    description: 'Tasting notes: creative, earthy, quietly bold.',
   },
   {
     to: '/about',

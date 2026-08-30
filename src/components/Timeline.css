@@ -6,15 +6,21 @@
   max-width: 640px;
 }
 
+/* A gentle S-curve instead of a straight line: a small SVG tile of one
+   wave cycle, tiled vertically via repeat-y so it works at any content
+   height without knowing the timeline's total length in advance. */
 .timeline::before {
   content: '';
   position: absolute;
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: var(--color-emphasis-soft);
+  width: 40px;
   transform: translateX(-50%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='120' viewBox='0 0 40 120'%3E%3Cpath d='M20,0 C32,15 32,45 20,60 C8,75 8,105 20,120' fill='none' stroke='%23cdd3ce' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 40px 120px;
 }
 
 .timeline-item {
