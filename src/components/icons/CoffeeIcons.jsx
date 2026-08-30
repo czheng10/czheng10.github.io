@@ -1,7 +1,10 @@
-// Small line-art icons standing in for steps of making coffee, used on
+// Small line-art icons standing in for coffee-culture staples, used on
 // the Career timeline blobs in place of plain numbers. Deliberately
 // simple (stroke-only, currentColor) so they read clearly at a small
-// size and pick up whatever color the blob around them is.
+// size and pick up whatever color the blob around them is. Picked for
+// being immediately recognizable as "coffee" at a glance — an earlier
+// process-themed set (grinder/portafilter/steaming pitcher) read too
+// ambiguous at this size.
 const base = {
   width: 26,
   height: 26,
@@ -13,76 +16,74 @@ const base = {
   strokeLinejoin: 'round',
 }
 
-// Whole beans
-export function Beans(props) {
+// Coffee bean
+export function Bean(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M8 9c-2.5 1-4 3.2-3.3 5.8C5.4 17.4 8 18.6 10 17.8c2-.8 3-3 2.3-5.6C11.6 9.6 10 8.2 8 9z" />
-      <path d="M7.3 10.2c1.4 1.6 1.7 4 .6 6" />
-      <path d="M14 12c-1.8 1-2.8 2.8-2.2 5 .6 2.2 2.6 3.2 4.2 2.5 1.6-.7 2.4-2.6 1.8-4.8-.6-2.2-2-3.4-3.8-2.7z" />
-      <path d="M13.3 13c1.1 1.4 1.4 3.3.6 4.8" />
+      <path d="M12 3.5c3 0 5.2 3.8 5.2 8.5s-2.2 8.5-5.2 8.5S6.8 16.7 6.8 12 9 3.5 12 3.5z" />
+      <path d="M12 4c-1.3 2.4-1.3 5.5 0 8s1.3 5.6 0 8" />
     </svg>
   )
 }
 
-// Grinder — hopper on a cylindrical body
+// Grinder — hopper, body, and a grinding dial
 export function Grinder(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M8 3h8l-2 5H10z" />
-      <rect x="7.5" y="8" width="9" height="9" rx="1.5" />
-      <path d="M12 17v3" />
-      <path d="M9 20h6" />
-      <path d="M16.5 11.5h2" />
+      <path d="M8 3h8l-1.5 4.5h-5z" />
+      <rect x="7" y="7.5" width="10" height="10" rx="2" />
+      <circle cx="12" cy="12.5" r="2" />
+      <path d="M12 17.5v3" />
+      <path d="M9 20.5h6" />
     </svg>
   )
 }
 
-// Portafilter — basket, spouts, and handle
-export function Portafilter(props) {
+// Stovetop moka pot
+export function MokaPot(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M9 4h6v3H9z" />
-      <path d="M8 7h8l-1 2H9z" />
-      <path d="M9.5 9c-.5 3 .5 6 2.5 6s3-3 2.5-6" />
-      <path d="M12 15v4" />
+      <path d="M7 19h10l-1-4H8z" />
+      <path d="M8.5 15V9.5" />
+      <path d="M15.5 15V9.5" />
+      <path d="M7.5 9.5h9l-1.2-4h-6.6z" />
+      <path d="M16 11c1.3.2 2 .8 2 1.6s-.7 1.4-2 1.6" />
     </svg>
   )
 }
 
-// Steaming milk pitcher
-export function Pitcher(props) {
+// Classic mug, with a little steam
+export function Mug(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M7 8h8l-1 10a2 2 0 0 1-2 1.8H10A2 2 0 0 1 8 18z" />
-      <path d="M15 9c1.5.3 2.2 1 2.2 2S16.5 12.5 15 12.8" />
-      <path d="M7.5 9.5L5 8" />
-      <path d="M9.5 4.5c.6.8.6 1.4 0 2.2" />
-      <path d="M13 4.5c.6.8.6 1.4 0 2.2" />
+      <path d="M5 9h10v6a5 5 0 0 1-10 0z" />
+      <path d="M15 10.5h2a2 2 0 0 1 0 4h-2" />
+      <path d="M8 4.5c.6.8.6 1.4 0 2.2" />
+      <path d="M11.5 4.5c.6.8.6 1.4 0 2.2" />
     </svg>
   )
 }
 
-// Finished cup, with a little steam
-export function Cup(props) {
+// To-go cup, with lid and sleeve
+export function ToGoCup(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M5 10h11v3a5.5 5.5 0 0 1-11 0z" />
-      <path d="M16 11.5h1.5a2 2 0 0 1 0 4H16" />
-      <path d="M9 4.5c.6.8.6 1.4 0 2.2" />
-      <path d="M12.5 4.5c.6.8.6 1.4 0 2.2" />
+      <path d="M7 8h10l-1 11a2 2 0 0 1-2 1.8h-4A2 2 0 0 1 8 19z" />
+      <path d="M6.5 8h11l.5-2h-12z" />
+      <path d="M11 6l.6-2h.8l.6 2" />
+      <rect x="7.6" y="12" width="8.8" height="2.6" rx="0.3" />
     </svg>
   )
 }
 
-export const coffeeIcons = [Beans, Grinder, Portafilter, Pitcher, Cup]
+export const coffeeIcons = [Bean, Grinder, MokaPot, Mug, ToGoCup]
 
 // Open book, with a little steam rising off it (same steam-curl style
-// as the Cup icon) — used for education/certificate entries on the
+// as the Mug icon) — used for education/certificate entries on the
 // timeline. A graduation cap read as too "academic" against the
-// coffee-making icons used for work roles; a book that's also
-// "brewing" keeps the same illustration language while still reading
-// clearly as education.
+// coffee icons used for work roles; a book that's also "brewing"
+// keeps the same illustration language while still reading clearly
+// as education.
 export function Book(props) {
   return (
     <svg {...base} {...props}>
