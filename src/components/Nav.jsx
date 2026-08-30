@@ -3,7 +3,6 @@ import Logo from './Logo'
 import './Nav.css'
 
 const links = [
-  { to: '/', label: 'Menu', end: true },
   { to: '/professional', label: 'Career' },
   { to: '/creatives', label: 'Creatives' },
   { to: '/about', label: 'About' },
