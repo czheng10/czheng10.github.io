@@ -27,7 +27,7 @@
    Hidden on narrow screens rather than shrunk, so it never crowds the
    heading/subtitle out of space. */
 .hero-drink-icon {
-  height: 180px;
+  height: 360px;
   width: auto;
   flex-shrink: 0;
 }

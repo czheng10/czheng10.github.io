@@ -18,7 +18,7 @@
 /* Small accent illustration tying the page back to its landing-menu
    drink (Iced Matcha Latte here, Iced Oat Vanilla Latte on Career). */
 .hero-drink-icon {
-  height: 180px;
+  height: 360px;
   width: auto;
   flex-shrink: 0;
 }
