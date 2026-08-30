@@ -74,3 +74,16 @@ export function Cup(props) {
 }
 
 export const matchaIcons = [Whisk, Bowl, Teapot, Scoop, Cup]
+
+// Graduation cap — used for education/certificate entries on the
+// timeline, to set them visually apart from the matcha-making icons
+// used for work roles.
+export function GraduationCap(props) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 5L2 9.5l10 4.5 10-4.5L12 5z" />
+      <path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5" />
+      <path d="M20.5 9.5v5.5" />
+    </svg>
+  )
+}

@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { matchaIcons } from './icons/MatchaIcons.jsx'
+import { matchaIcons, GraduationCap } from './icons/MatchaIcons.jsx'
 import './Timeline.css'
 
 // One entry in the zigzag timeline. Observes its own visibility and
 // fades/slides in once scrolled into view (an organic reveal instead
 // of everything appearing at once). The marker is a hand-drawn-looking
-// blob (via an asymmetric border-radius) holding an icon for one step
-// of making matcha, cycling through the 5 icons in order.
-function TimelineItem({ entry, index }) {
+// blob (via an asymmetric border-radius) holding an icon — education
+// entries get a graduation cap in the alt (cream) blob shape/color,
+// work roles cycle through the matcha-making-step icons in the
+// default (green) blob, so the two kinds of entry read apart at a
+// glance and not just by reading the card text.
+function TimelineItem({ entry, index, Icon }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
-  const Icon = matchaIcons[index % matchaIcons.length]
-  const altBlob = index % 2 === 1
+  const isEducation = entry.type === 'education'
 
   useEffect(() => {
     const node = ref.current
@@ -35,11 +37,16 @@ function TimelineItem({ entry, index }) {
       className={'timeline-item' + (visible ? ' timeline-item-visible' : '')}
       style={{ transitionDelay: `${index * 70}ms` }}
     >
-      <div className={'timeline-marker' + (altBlob ? ' timeline-marker-alt' : '')}>
+      <div className={'timeline-marker' + (isEducation ? ' timeline-marker-alt' : '')}>
         <Icon className="timeline-marker-icon" />
       </div>
       <div className="timeline-card">
-        <div className="timeline-date">{entry.date}</div>
+        <div className="timeline-meta">
+          <span className="timeline-date">{entry.date}</span>
+          <span className={'timeline-type' + (isEducation ? ' timeline-type-education' : '')}>
+            {isEducation ? 'Education' : 'Work'}
+          </span>
+        </div>
         <h3 className="timeline-title">{entry.title}</h3>
         <div className="timeline-org">{entry.org}</div>
         <p className="timeline-description">{entry.description}</p>
@@ -49,11 +56,18 @@ function TimelineItem({ entry, index }) {
 }
 
 export default function Timeline({ entries }) {
+  // Matcha icons cycle only across work entries, so the whisk-to-cup
+  // sequence isn't thrown off by education entries interleaved between
+  // them; education entries always get the graduation cap instead.
+  let workCounter = 0
+
   return (
     <ul className="timeline">
-      {entries.map((entry, index) => (
-        <TimelineItem key={entry.title + entry.date} entry={entry} index={index} />
-      ))}
+      {entries.map((entry, index) => {
+        const Icon =
+          entry.type === 'education' ? GraduationCap : matchaIcons[workCounter++ % matchaIcons.length]
+        return <TimelineItem key={entry.title + entry.date} entry={entry} index={index} Icon={Icon} />
+      })}
     </ul>
   )
 }
