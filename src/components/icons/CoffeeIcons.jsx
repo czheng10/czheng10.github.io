@@ -78,19 +78,21 @@ export function ToGoCup(props) {
 
 export const coffeeIcons = [Bean, Grinder, MokaPot, Mug, ToGoCup]
 
-// Open book, with a little steam rising off it (same steam-curl style
-// as the Mug icon) — used for education/certificate entries on the
-// timeline. A graduation cap read as too "academic" against the
-// coffee icons used for work roles; a book that's also "brewing"
-// keeps the same illustration language while still reading clearly
-// as education.
-export function Book(props) {
+// French press — glass cylinder, plunger rod + knob, side handle. Used
+// for education/certificate entries on the timeline, standing apart
+// from the work-role icons above by silhouette (a tall straight-sided
+// vessel with a plunger, rather than a bean/hopper/pot/cup shape) while
+// staying clearly coffee-themed. Replaces an open-book icon: a
+// graduation cap read as too "academic" against the coffee set, and a
+// book (even a steaming one) wasn't actually a coffee thing — this is.
+export function FrenchPress(props) {
   return (
     <svg {...base} {...props}>
-      <path d="M4 6c2-1 4.5-1 6 0v12c-1.5-1-4-1-6 0z" />
-      <path d="M16 6c-2-1-4.5-1-6 0v12c1.5-1 4-1 6 0z" />
-      <path d="M9 4.5c.6.8.6 1.4 0 2.2" />
-      <path d="M12.5 4.5c.6.8.6 1.4 0 2.2" />
+      <path d="M7 9h10" />
+      <path d="M8 9v9a3 3 0 0 0 3 3h2a3 3 0 0 0 3-3V9" />
+      <path d="M12 9V3.5" />
+      <path d="M9.5 3.5h5" />
+      <path d="M17 11c1.6.2 2.6 1 2.6 2s-1 1.8-2.6 2" />
     </svg>
   )
 }

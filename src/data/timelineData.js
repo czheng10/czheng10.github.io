@@ -1,78 +1,103 @@
-// Real career/education timeline, pulled from Cindy's resume.
+// Real career/education timeline, pulled directly from Cindy's resume.
 // Ordered most-recent-first (reverse chronological, like a resume).
 // `type` is 'work' (roles: intern, researcher, TA, full-time) or
 // 'education' (degrees/certificates) — Timeline.jsx uses it to give
 // education entries a visually distinct marker/icon/label.
+//
+// Each entry: `header` is "Company - Title", `subheader` is the
+// team/project plus location, and `bullets` are the resume's own
+// bullet points verbatim (not reworded/summarized) so the specifics
+// stay accurate.
 export const timelineData = [
   {
     date: 'Aug 2025 — Present',
-    title: 'Software Engineer, Marketing Technology Engineering',
-    org: 'LinkedIn, New York, NY',
+    header: 'LinkedIn - Software Engineer',
+    subheader: 'Marketing Technology Engineering, New York, NY',
     type: 'work',
-    description:
-      'Launched an AI-driven search-optimization algorithm lifting citation rate 20% (186% growth on key pages) and built production AI agents across 2 product lines.',
+    bullets: [
+      'Designed and launched an AI-driven search-optimization algorithm from concept to production, lifting citation rate 20% within 60 days — individual key-product pages saw 186% growth',
+      'Built and hardened production AI agents for 2 product lines; engineered an automated evaluation and reporting pipeline that increased system observability at zero added infrastructure cost',
+    ],
   },
   {
     date: 'May 2025',
-    title: 'B.S. Computer Science and Engineering',
-    org: 'Massachusetts Institute of Technology',
+    header: 'Massachusetts Institute of Technology - B.S. Computer Science and Engineering',
+    subheader: 'Cambridge, MA',
     type: 'education',
-    description:
-      'Graduated with a 4.8/5.0 GPA; coursework spanned algorithms, machine learning, and systems engineering.',
+    bullets: [
+      'GPA: 4.8/5.0',
+      'Relevant Coursework: Design and Analysis of Algorithms, Math for Computer Science, Machine Learning, Computation Structures, Systems Engineering, Introduction to Computational Thinking and Data Science',
+    ],
   },
   {
     date: 'Aug 2024 — Dec 2024',
-    title: 'Undergraduate Teaching Assistant',
-    org: 'MIT EECS, Cambridge, MA',
+    header: 'MIT EECS - Undergraduate Teaching Assistant',
+    subheader: 'Cambridge, MA',
     type: 'work',
-    description:
-      'Led weekly sections for 30+ students in "AI, Decision Making, and Society," plus office hours on training and evaluating AI models.',
+    bullets: [
+      'Supported "AI, Decision Making, and Society" course delivery, leading weekly sections for 30+ students on AI, algorithmic decision-making, and societal impact',
+      'Hosted office hours assisting undergraduate and graduate students with training and evaluating AI models',
+    ],
   },
   {
     date: 'May 2024 — Aug 2024',
-    title: 'Software Engineer Intern — Internal Ads',
-    org: 'LinkedIn, Sunnyvale, CA',
+    header: 'LinkedIn - Software Engineer Intern',
+    subheader: 'Internal Ads, Sunnyvale, CA',
     type: 'work',
-    description:
-      'Shipped a ranking/recommendation algorithm that lifted click-through prediction accuracy 25% and an ad-serving feature that grew bookings up to 15% ($3.4M).',
+    bullets: [
+      'Migrated a legacy system to a unified ads workflow, improving data visibility and platform capabilities',
+      'Built and tuned a ranking/recommendation algorithm that improved click-through prediction accuracy by 25%',
+      'Designed and shipped a new ad-serving feature that lifted platform bookings up to 15% ($3.4M)',
+      'Architected a cross-platform tracking system to capture and analyze touchpoint-level engagement data',
+    ],
   },
   {
     date: 'Jan 2024 — May 2024',
-    title: 'Undergraduate Researcher — Data-Driven Democracy',
-    org: 'MIT Digital Humanities Lab, Cambridge, MA',
+    header: 'MIT Digital Humanities Lab - Undergraduate Researcher',
+    subheader: 'Data-Driven Democracy, Cambridge, MA',
     type: 'work',
-    description:
-      "Built statistical models and engineered 7 API endpoints analyzing campaign-finance and survey data for India's national election.",
+    bullets: [
+      "Built 2 statistical models analyzing campaign-finance and survey-response data for India's national election",
+      'Engineered 7 API endpoints to support large-scale data retrieval and analysis',
+      'Designed and executed 3 quantitative visualizations mapping relationships between donors and political parties',
+    ],
   },
   {
     date: 'May 2023 — Aug 2023',
-    title: 'Software Engineer Intern — Notifications Expansion',
-    org: 'LinkedIn, Sunnyvale, CA',
+    header: 'LinkedIn - Software Engineer Intern',
+    subheader: 'Notifications Expansion, Sunnyvale, CA',
     type: 'work',
-    description:
-      'Architected a dynamic backend system that scaled a data pipeline to 1.1M annual users, a 4x increase over the prior static solution.',
+    bullets: [
+      'Architected a dynamic backend system that scaled a data pipeline to 1.1M annual users — a 4x increase over the prior static solution',
+      'Authored 3+ technical design docs formalizing and automating a previously manual discovery process',
+      'Refactored and optimized core codebase to improve system maintainability and performance',
+    ],
   },
   {
     date: 'Jun 2022 — Dec 2022',
-    title: 'Undergraduate Researcher — This Was Paris in 1970',
-    org: 'MIT Digital Humanities Lab, Cambridge, MA',
+    header: 'MIT Digital Humanities Lab - Undergraduate Researcher',
+    subheader: 'This Was Paris in 1970, Cambridge, MA',
     type: 'work',
-    description:
-      'Optimized an ImageMagick image-processing pipeline by 99.8% and took a prototype to production quality, architected for 10,000+ concurrent users.',
+    bullets: [
+      'Optimized an image-processing pipeline with ImageMagick, improving conversion efficiency by 99.8%',
+      'Extended metadata accessibility for users by building tooling on Django Admin',
+      'Took a prototype application to production quality, architected to support 10,000+ concurrent users',
+    ],
   },
   {
     date: 'Jun 2022 — Aug 2022',
-    title: 'Advanced Software Engineering Certificate',
-    org: 'Codepath, New York, NY',
+    header: 'Codepath - Advanced Software Engineering Course',
+    subheader: 'New York, NY',
     type: 'education',
-    description:
-      'Completed an intensive data structures & algorithms program, earning a Certificate of Achievement.',
+    bullets: [
+      'Awarded Certificate of Achievement after completing lectures and panels on data structures and algorithms',
+    ],
   },
   {
     date: 'Aug 2021',
-    title: 'Started B.S. in Computer Science and Engineering',
-    org: 'Massachusetts Institute of Technology',
+    header: 'Massachusetts Institute of Technology - Started B.S. in Computer Science and Engineering',
+    subheader: 'Cambridge, MA',
     type: 'education',
-    description: 'Where it all began.',
+    bullets: ['Where it all began.'],
   },
 ]
