@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { matchaIcons, GraduationCap } from './icons/MatchaIcons.jsx'
+import { coffeeIcons, GraduationCap } from './icons/CoffeeIcons.jsx'
 import './Timeline.css'
 
 // One entry in the zigzag timeline. Observes its own visibility and
@@ -7,7 +7,7 @@ import './Timeline.css'
 // of everything appearing at once). The marker is a hand-drawn-looking
 // blob (via an asymmetric border-radius) holding an icon — education
 // entries get a graduation cap in the alt (cream) blob shape/color,
-// work roles cycle through the matcha-making-step icons in the
+// work roles cycle through the coffee-making-step icons in the
 // default (green) blob, so the two kinds of entry read apart at a
 // glance and not just by reading the card text.
 function TimelineItem({ entry, index, Icon }) {
@@ -56,7 +56,7 @@ function TimelineItem({ entry, index, Icon }) {
 }
 
 export default function Timeline({ entries }) {
-  // Matcha icons cycle only across work entries, so the whisk-to-cup
+  // Coffee icons cycle only across work entries, so the beans-to-cup
   // sequence isn't thrown off by education entries interleaved between
   // them; education entries always get the graduation cap instead.
   let workCounter = 0
@@ -65,7 +65,7 @@ export default function Timeline({ entries }) {
     <ul className="timeline">
       {entries.map((entry, index) => {
         const Icon =
-          entry.type === 'education' ? GraduationCap : matchaIcons[workCounter++ % matchaIcons.length]
+          entry.type === 'education' ? GraduationCap : coffeeIcons[workCounter++ % coffeeIcons.length]
         return <TimelineItem key={entry.title + entry.date} entry={entry} index={index} Icon={Icon} />
       })}
     </ul>
