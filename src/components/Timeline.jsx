@@ -8,8 +8,14 @@ import './Timeline.css'
 // blob (via an asymmetric border-radius) holding an icon — education
 // entries get a French press in the alt (cream) blob shape/color,
 // work roles cycle through the coffee-culture icons in the default
-// (green) blob, so the two kinds of entry read apart at a glance and
-// not just by reading the card text.
+// (green) blob.
+//
+// Education cards intentionally use a different, lighter layout than
+// work cards rather than just a different color: a "Degree"/
+// "Certificate" pill (so a Codepath certificate never reads as if it
+// were a school) and a single plain status line ("Started"/
+// "Graduated") instead of a bullet list, since a resume-style bullet
+// list for a one-word fact looked silly.
 function TimelineItem({ entry, index, Icon }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
@@ -40,20 +46,24 @@ function TimelineItem({ entry, index, Icon }) {
       <div className={'timeline-marker' + (isEducation ? ' timeline-marker-alt' : '')}>
         <Icon className="timeline-marker-icon" />
       </div>
-      <div className="timeline-card">
+      <div className={'timeline-card' + (isEducation ? ' timeline-card-edu' : '')}>
         <div className="timeline-meta">
           <span className="timeline-date">{entry.date}</span>
           <span className={'timeline-type' + (isEducation ? ' timeline-type-education' : '')}>
-            {isEducation ? 'Education' : 'Work'}
+            {isEducation ? entry.credential : 'Work'}
           </span>
         </div>
         <h3 className="timeline-title">{entry.header}</h3>
         <div className="timeline-org">{entry.subheader}</div>
-        <ul className="timeline-bullets">
-          {entry.bullets.map((bullet) => (
-            <li key={bullet}>{bullet}</li>
-          ))}
-        </ul>
+        {isEducation ? (
+          <p className="timeline-status">{entry.status}</p>
+        ) : (
+          <ul className="timeline-bullets">
+            {entry.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </li>
   )

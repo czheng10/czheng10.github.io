@@ -148,6 +148,20 @@
   line-height: 1.5;
 }
 
+/* Education cards are intentionally lighter than work cards -- less
+   padding, no bullet list -- so the two kinds of entry don't just
+   look like the same card in a different color. */
+.timeline-card-edu {
+  padding: 1rem 1.25rem;
+}
+
+.timeline-status {
+  margin: 0;
+  font-style: italic;
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+}
+
 /* Below this width, collapse to a single left-aligned column — a
    zigzag layout gets cramped on narrow/mobile screens. */
 @media (max-width: 640px) {

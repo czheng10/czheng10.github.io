@@ -1,13 +1,21 @@
 // Real career/education timeline, pulled directly from Cindy's resume.
 // Ordered most-recent-first (reverse chronological, like a resume).
 // `type` is 'work' (roles: intern, researcher, TA, full-time) or
-// 'education' (degrees/certificates) — Timeline.jsx uses it to give
-// education entries a visually distinct marker/icon/label.
+// 'education' (degrees/certificates) — Timeline.jsx renders the two
+// kinds with different card layouts, not just a different color.
 //
-// Each entry: `header` is "Company - Title", `subheader` is the
+// Work entries: `header` is "Company - Title", `subheader` is the
 // team/project plus location, and `bullets` are the resume's own
 // bullet points verbatim (not reworded/summarized) so the specifics
 // stay accurate.
+//
+// Education entries: `header` is the degree/certificate name,
+// `subheader` is "Institution, Location", `credential` ('Degree' or
+// 'Certificate') drives the pill label so it's clear at a glance
+// which kind of credential it is -- a Codepath certificate shouldn't
+// read the same as an MIT degree -- and `status` ('Started' /
+// 'Graduated') is shown as a single plain line instead of a bullet
+// list, since a one-word "bullet" looked silly.
 export const timelineData = [
   {
     date: 'Aug 2025 — Present',
@@ -21,10 +29,11 @@ export const timelineData = [
   },
   {
     date: 'May 2025',
-    header: 'Massachusetts Institute of Technology - B.S. Computer Science and Engineering',
-    subheader: 'Cambridge, MA',
+    header: 'B.S. Computer Science and Engineering',
+    subheader: 'Massachusetts Institute of Technology, Cambridge, MA',
     type: 'education',
-    bullets: ['Graduated.'],
+    credential: 'Degree',
+    status: 'Graduated',
   },
   {
     date: 'Aug 2024 — Dec 2024',
@@ -78,16 +87,18 @@ export const timelineData = [
   },
   {
     date: 'Jun 2022 — Aug 2022',
-    header: 'Codepath - Advanced Software Engineering Course',
-    subheader: 'New York, NY',
+    header: 'Advanced Software Engineering Certificate',
+    subheader: 'Codepath, New York, NY',
     type: 'education',
-    bullets: ['Graduated.'],
+    credential: 'Certificate',
+    status: 'Graduated',
   },
   {
     date: 'Aug 2021',
-    header: 'Massachusetts Institute of Technology - Started B.S. in Computer Science and Engineering',
-    subheader: 'Cambridge, MA',
+    header: 'B.S. Computer Science and Engineering',
+    subheader: 'Massachusetts Institute of Technology, Cambridge, MA',
     type: 'education',
-    bullets: ['Started.'],
+    credential: 'Degree',
+    status: 'Started',
   },
 ]
