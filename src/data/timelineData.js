@@ -24,10 +24,7 @@ export const timelineData = [
     header: 'Massachusetts Institute of Technology - B.S. Computer Science and Engineering',
     subheader: 'Cambridge, MA',
     type: 'education',
-    bullets: [
-      'GPA: 4.8/5.0',
-      'Relevant Coursework: Design and Analysis of Algorithms, Math for Computer Science, Machine Learning, Computation Structures, Systems Engineering, Introduction to Computational Thinking and Data Science',
-    ],
+    bullets: ['Graduated.'],
   },
   {
     date: 'Aug 2024 — Dec 2024',
@@ -84,15 +81,13 @@ export const timelineData = [
     header: 'Codepath - Advanced Software Engineering Course',
     subheader: 'New York, NY',
     type: 'education',
-    bullets: [
-      'Awarded Certificate of Achievement after completing lectures and panels on data structures and algorithms',
-    ],
+    bullets: ['Graduated.'],
   },
   {
     date: 'Aug 2021',
     header: 'Massachusetts Institute of Technology - Started B.S. in Computer Science and Engineering',
     subheader: 'Cambridge, MA',
     type: 'education',
-    bullets: ['Where it all began.'],
+    bullets: ['Started.'],
   },
 ]
