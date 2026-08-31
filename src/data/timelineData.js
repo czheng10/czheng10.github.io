@@ -45,10 +45,8 @@ export const timelineData = [
     subheader: 'Internal Ads, Sunnyvale, CA',
     type: 'work',
     bullets: [
-      'Migrated a legacy system to a unified ads workflow, improving data visibility and platform capabilities',
       'Built and tuned a ranking/recommendation algorithm that improved click-through prediction accuracy by 25%',
       'Designed and shipped a new ad-serving feature that lifted platform bookings up to 15% ($3.4M)',
-      'Architected a cross-platform tracking system to capture and analyze touchpoint-level engagement data',
     ],
   },
   {
@@ -59,7 +57,6 @@ export const timelineData = [
     bullets: [
       "Built 2 statistical models analyzing campaign-finance and survey-response data for India's national election",
       'Engineered 7 API endpoints to support large-scale data retrieval and analysis',
-      'Designed and executed 3 quantitative visualizations mapping relationships between donors and political parties',
     ],
   },
   {
@@ -70,7 +67,6 @@ export const timelineData = [
     bullets: [
       'Architected a dynamic backend system that scaled a data pipeline to 1.1M annual users — a 4x increase over the prior static solution',
       'Authored 3+ technical design docs formalizing and automating a previously manual discovery process',
-      'Refactored and optimized core codebase to improve system maintainability and performance',
     ],
   },
   {
@@ -80,7 +76,6 @@ export const timelineData = [
     type: 'work',
     bullets: [
       'Optimized an image-processing pipeline with ImageMagick, improving conversion efficiency by 99.8%',
-      'Extended metadata accessibility for users by building tooling on Django Admin',
       'Took a prototype application to production quality, architected to support 10,000+ concurrent users',
     ],
   },
