@@ -5,22 +5,22 @@ import './About.css'
 export default function About() {
   return (
     <section className="about">
-      <div className="hero">
-        <div className="hero-text">
-          <p className="about-greeting">Hey hey, this is Cindy~</p>
-          <h2 className="about-subheader">
-            My house blend is made up of equal parts creativity and code.
-          </h2>
-        </div>
+      <div className="about-body">
+        {/* Floated so it sits as a side accent to the opening lines
+            instead of splitting the greeting/subheader from the rest
+            of the bio in a separate row. */}
         <img
           src={houseBlendBag}
           alt=""
-          className="hero-drink-icon"
+          className="about-bag-icon"
           aria-hidden="true"
         />
-      </div>
 
-      <div className="about-body">
+        <p className="about-greeting">Hey hey, this is Cindy~</p>
+        <h2 className="about-subheader">
+          My house blend is made up of equal parts creativity and code.
+        </h2>
+
         <img
           src={cindyPhoto}
           alt="Cindy sitting at a café table with an iced latte"
