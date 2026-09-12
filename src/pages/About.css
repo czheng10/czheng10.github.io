@@ -1,9 +1,40 @@
 .about {
   padding: 2.5rem 0;
-  max-width: 60ch;
 }
 
-.about p {
+.hero {
+  padding: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text {
+  min-width: 0;
+}
+
+/* Small accent illustration tying the page back to its landing-menu
+   drink (The House Blend here, Iced Oat Vanilla Latte on Career, Iced
+   Matcha Latte on Creatives). */
+.hero-drink-icon {
+  height: 360px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .hero-drink-icon {
+    display: none;
+  }
+}
+
+.about-body {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.about-body p {
   line-height: 1.6;
   color: var(--color-text-soft);
 }
@@ -12,28 +43,36 @@
   font-family: var(--font-display);
   font-size: 1.15rem;
   color: var(--color-text);
-  margin-top: 0;
+  margin: 0 0 0.75rem;
+}
+
+.about-subheader {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-emphasis);
+  margin: 0;
+  line-height: 1.3;
+  max-width: 20ch;
 }
 
 .about-photo {
   display: block;
   width: 100%;
-  max-width: 320px;
+  max-width: 280px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   margin: 0 0 1.75rem;
 }
 
-.about-subheader {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--color-emphasis);
-  margin: 0 0 1rem;
-  line-height: 1.3;
-}
-
 .about-signoff {
   margin-top: 1.5rem;
   font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
