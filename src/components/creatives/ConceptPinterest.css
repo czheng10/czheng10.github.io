@@ -1,0 +1,21 @@
+.concept-pinterest {
+  columns: 2;
+  column-gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .concept-pinterest {
+    columns: 3;
+  }
+}
+
+@media (min-width: 960px) {
+  .concept-pinterest {
+    columns: 4;
+  }
+}
+
+.pinterest-tile {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}

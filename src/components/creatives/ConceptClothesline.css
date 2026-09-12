@@ -1,0 +1,60 @@
+.concept-clothesline {
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+.clothesline-wire {
+  position: absolute;
+  top: 1.75rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-text-soft);
+  opacity: 0.6;
+}
+
+.clothesline-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.75rem 1.25rem;
+  position: relative;
+}
+
+.clothesline-item {
+  position: relative;
+  width: 150px;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform var(--transition-fast);
+}
+
+.clothesline-item:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.clothesline-clip {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 20px;
+  background: var(--color-emphasis);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.clothesline-polaroid {
+  box-sizing: border-box;
+  background: var(--color-emphasis-2);
+  padding: 0.5rem 0.5rem 1.5rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 640px) {
+  .clothesline-item {
+    width: 42vw;
+    max-width: 160px;
+  }
+}
