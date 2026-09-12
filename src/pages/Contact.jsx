@@ -5,11 +5,33 @@ export default function Contact() {
     <section className="contact">
       <h1>Contact</h1>
       <p>
-        Best way to reach me: <a href="mailto:you@example.com">you@example.com</a>
+        Best way to reach me:{' '}
+        <a href="mailto:cindyzheng95@gmail.com">cindyzheng95@gmail.com</a>
+      </p>
+      <p>
+        Best way to reach me professionally?{' '}
+        <a
+          href="https://www.linkedin.com/in/cindynzheng/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          LinkedIn
+        </a>
+        .
+      </p>
+      <p>
+        Want to see what else I'm up to?{' '}
+        <a
+          href="https://www.instagram.com/cindynzheng/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram
+        </a>
+        .
       </p>
       <div className="contact-links">
         <a href="https://github.com/czheng10" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
     </section>
   )
