@@ -11,3 +11,14 @@
   line-height: 1.6;
   color: var(--color-text-soft);
 }
+
+.about-greeting {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.about-signoff {
+  margin-top: 1.5rem;
+  font-style: italic;
+}
