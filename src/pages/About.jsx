@@ -27,18 +27,22 @@ export default function About() {
           className="about-photo"
         />
         <p>
-          I am a software engineer building AI agents (and occasionally
-          battling them too). At LinkedIn, I work on Marketing Technology
-          Engineering, where I've shipped an AI-driven search-optimization
-          algorithm and built production AI agents across multiple product
-          lines. I have a B.S. in Computer Science and Engineering from MIT
-          already behind me.
+          By (week)day, I am a software engineer at LinkedIn, harnessing AI
+          to assist marketers in doing their best work. In the last year,
+          that's meant developing Answer Engine Optimization (AEO)
+          solutions and building production marketing chatbots across
+          multiple LinkedIn business lines. Prior to becoming a software
+          engineer full-time, I studied Computer Science and Engineering at
+          MIT, where the lessons that stuck had less to do with syntax and
+          more to do with how to think.
         </p>
         <p>
-          Off the clock, you'll usually find me with a matcha in hand, clay
-          under my nails from the pottery wheel, and a running daydream
-          about the café I'll open someday. A creative activity, a good
-          conversation, and a cute fit are what fill my cup.
+          Off the clock, you'll usually find me either whisking a matcha,
+          throwing on the pottery wheel, or daydreaming with my friends
+          about our future bakery/cafe/flower shop. A creative side quest,
+          a good conversation, and a cute fit are what fill my cup, and
+          ultimately, I'm a believer that a little whimsy (and a dash of
+          caffeine) can take you a long way~
         </p>
         <p className="about-signoff">
           Thanks again for dropping by Studio, hope you enjoyed your stay :)
