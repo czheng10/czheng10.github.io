@@ -7,7 +7,7 @@
   --color-bg: #A1AFB8;          /* Bleu fané — foundation */
   --color-surface: #CBD3D9;     /* lighter tint of the bg, for cards */
   --color-text: #483F29;        /* Bois ancien — ink */
-  --color-text-soft: #6b5f4a;
+  --color-text-soft: #443b28;  /* darkened from #6b5f4a: ~2.8:1 against --color-bg, below WCAG AA (4.5:1) for body text; this hits ~4.9:1 */
 
   --color-emphasis: #7A774A;       /* Lierre — primary pop (menu, blobs, buttons) */
   --color-emphasis-soft: #cdd3ce;  /* light wash, for hovers/lines */
