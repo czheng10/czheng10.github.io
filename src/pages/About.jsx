@@ -45,7 +45,8 @@ export default function About() {
           caffeine) can take you a long way~
         </p>
         <p className="about-signoff">
-          Thanks again for dropping by Studio, hope you enjoyed your stay :)
+          Thanks for dropping by Studio, hope you enjoyed your stay and
+          can't wait to see you again :)
         </p>
       </div>
     </section>
