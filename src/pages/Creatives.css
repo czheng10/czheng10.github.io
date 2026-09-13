@@ -175,26 +175,7 @@
   color: var(--color-on-emphasis);
 }
 
-/* Style A -- tilt + lift: title/matcha cards lean opposite directions
-   at rest, like they were tacked up by hand, and square up + lift
-   slightly on hover. */
-.corkboard-card--tilt {
-  transition: transform var(--transition-fast);
-}
-
-.corkboard-card--tilt.corkboard-title-card {
-  transform: rotate(-2.5deg);
-}
-
-.corkboard-card--tilt.corkboard-matcha-card {
-  transform: rotate(2.5deg);
-}
-
-.corkboard-card--tilt:hover {
-  transform: rotate(0deg) translateY(-4px);
-}
-
-/* Style B -- hand-drawn doodle: a small sparkle sketched near the
+/* Style A -- hand-drawn doodle: a small sparkle sketched near the
    title card's corner, like a margin doodle. */
 .corkboard-doodle {
   position: absolute;
@@ -204,7 +185,7 @@
   z-index: 2;
 }
 
-/* Style C -- gentle sway: a slow, continuous rock, staggered between
+/* Style B -- gentle sway: a slow, continuous rock, staggered between
    the two cards so they don't move in lockstep. Disabled for anyone
    who prefers reduced motion. */
 @keyframes corkboard-sway {

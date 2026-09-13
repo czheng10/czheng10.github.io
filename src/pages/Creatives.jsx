@@ -4,14 +4,17 @@ import matchaLatte from '../assets/matcha-latte-icon.png'
 import Corkboard from '../components/creatives/Corkboard.jsx'
 import './Creatives.css'
 
-// Three candidate styles for making the taped title/matcha cards feel
-// less static -- temporary comparison UI, same pattern used earlier to
-// pick the Corkboard layout itself. Remove the switcher (and the two
-// styles Cindy doesn't pick) once she's chosen a favorite.
+// Candidate styles for making the taped title/matcha cards feel less
+// static -- temporary comparison UI, same pattern used earlier to pick
+// the Corkboard layout itself. Remove the switcher (and whichever style
+// Cindy doesn't pick) once she's chosen a favorite.
+//
+// A third option, tilt + lift on hover, was tried and dropped: the
+// hover-lift reads as "this is clickable," which is misleading since
+// these cards don't do anything when clicked.
 const TITLE_STYLES = [
-  { id: 'tilt', label: 'A · Tilt + lift' },
-  { id: 'doodle', label: 'B · Hand-drawn doodle' },
-  { id: 'breathe', label: 'C · Gentle sway' },
+  { id: 'doodle', label: 'A · Hand-drawn doodle' },
+  { id: 'breathe', label: 'B · Gentle sway' },
 ]
 
 // Small hand-drawn-feel sparkle, drawn to the same line-art spec as the
@@ -37,7 +40,7 @@ function DoodleSparkle(props) {
 }
 
 export default function Creatives() {
-  const [titleStyle, setTitleStyle] = useState('tilt')
+  const [titleStyle, setTitleStyle] = useState('doodle')
 
   return (
     <section>
