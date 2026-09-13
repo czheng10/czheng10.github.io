@@ -1,41 +1,108 @@
-.hero {
-  padding: 3rem 0 1rem;
+/* The board: background is a color-mix() of two existing palette
+   tokens (emphasis-2 + text), not a new raw color -- stays inside the
+   site's four-color rule (see docs/DESIGN.md) rather than introducing a
+   cork-brown as a fifth. The radial-gradient speckle layers (ink color)
+   suggest a cork texture without a real image asset. This used to be
+   scoped to just the art-piece grid; now it's the whole page's
+   background, since the title/intro and matcha icon are part of the
+   same board. */
+.creatives-board {
+  background: color-mix(in srgb, var(--color-emphasis-2) 65%, var(--color-text) 20%);
+  background-image:
+    radial-gradient(circle, var(--color-text) 1px, transparent 1.6px),
+    radial-gradient(circle, var(--color-text) 1px, transparent 1.6px),
+    radial-gradient(circle, var(--color-text) 1px, transparent 1.6px);
+  background-size: 42px 42px, 67px 67px, 89px 89px;
+  background-position: 0 0, 18px 30px, 45px 8px;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem 3rem;
+  margin-top: 2rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.creatives-board-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem 2rem;
+  margin-bottom: 3rem;
 }
 
-.hero-text {
-  min-width: 0;
+/* Shared "taped to the board" card -- page chrome (title, matcha icon),
+   deliberately different from the pinned art pieces in Corkboard.css:
+   flat rectangle + tape corners instead of a tilted photo + round pin,
+   so the two read as different *kinds* of thing on the same board. */
+.corkboard-card {
+  position: relative;
+  box-sizing: border-box;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  padding: 1.5rem 1.75rem;
 }
 
-.hero h1 {
-  font-size: 2.4rem;
+.corkboard-tape {
+  position: absolute;
+  top: -0.65rem;
+  width: 48px;
+  height: 20px;
+  background: var(--color-emphasis-2);
+  opacity: 0.85;
+  box-shadow: var(--shadow-soft);
+}
+
+.corkboard-tape-left {
+  left: -0.6rem;
+  transform: rotate(-14deg);
+}
+
+.corkboard-tape-right {
+  right: -0.6rem;
+  transform: rotate(12deg);
+}
+
+.corkboard-title-card {
+  flex: 1 1 320px;
+  max-width: 440px;
+}
+
+.corkboard-title-card h1 {
   margin: 0 0 0.75rem;
-}
-
-/* Small accent illustration tying the page back to its landing-menu
-   drink (Iced Matcha Latte here, Iced Oat Vanilla Latte on Career). */
-.hero-drink-icon {
-  height: 360px;
-  width: auto;
-  flex-shrink: 0;
-}
-
-@media (max-width: 640px) {
-  .hero-drink-icon {
-    display: none;
-  }
+  font-size: 2.2rem;
 }
 
 .creatives-intro {
+  margin: 0;
   color: var(--color-text-soft);
-  margin-bottom: 1.5rem;
+}
+
+.corkboard-matcha-card {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corkboard-matcha-icon {
+  height: 220px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .creatives-board-header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .corkboard-matcha-icon {
+    height: 140px;
+  }
 }
 
 .creatives-footer-cta {
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
   padding-top: 2rem;
   border-top: 1px solid var(--color-emphasis-soft);
   text-align: center;
