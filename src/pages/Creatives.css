@@ -83,6 +83,16 @@
   color: var(--color-text-soft);
 }
 
+/* Instructional copy reads differently from the description above it:
+   italic + smaller + its own line, so it registers as "how to use this"
+   rather than more description. */
+.creatives-instructions {
+  margin: 0.4rem 0 0;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+}
+
 .corkboard-matcha-card {
   flex: 0 0 auto;
   display: flex;
@@ -123,4 +133,102 @@
 
 .creatives-footer-cta a:hover {
   text-decoration: underline;
+}
+
+
+/* Temporary: comparison switcher for the 3 candidate title-card styles
+   (see Creatives.jsx). Reuses the same idle/active visual pattern as
+   the site's other "compare before committing" switchers -- surface
+   background idle, emphasis background + on-emphasis text when active.
+   Remove this block once a style is picked. */
+.title-style-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+}
+
+.title-style-switcher-label {
+  margin-right: 0.25rem;
+}
+
+.title-style-btn {
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.title-style-btn:hover {
+  background: var(--color-emphasis-soft);
+}
+
+.title-style-btn.is-active {
+  background: var(--color-emphasis);
+  color: var(--color-on-emphasis);
+}
+
+/* Style A -- tilt + lift: title/matcha cards lean opposite directions
+   at rest, like they were tacked up by hand, and square up + lift
+   slightly on hover. */
+.corkboard-card--tilt {
+  transition: transform var(--transition-fast);
+}
+
+.corkboard-card--tilt.corkboard-title-card {
+  transform: rotate(-2.5deg);
+}
+
+.corkboard-card--tilt.corkboard-matcha-card {
+  transform: rotate(2.5deg);
+}
+
+.corkboard-card--tilt:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+/* Style B -- hand-drawn doodle: a small sparkle sketched near the
+   title card's corner, like a margin doodle. */
+.corkboard-doodle {
+  position: absolute;
+  top: -0.9rem;
+  right: 0.75rem;
+  color: var(--color-emphasis);
+  z-index: 2;
+}
+
+/* Style C -- gentle sway: a slow, continuous rock, staggered between
+   the two cards so they don't move in lockstep. Disabled for anyone
+   who prefers reduced motion. */
+@keyframes corkboard-sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+.corkboard-card--breathe.corkboard-title-card {
+  animation: corkboard-sway 7s ease-in-out infinite;
+}
+
+.corkboard-card--breathe.corkboard-matcha-card {
+  animation: corkboard-sway 7s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corkboard-card--breathe.corkboard-title-card,
+  .corkboard-card--breathe.corkboard-matcha-card {
+    animation: none;
+  }
 }
