@@ -9,42 +9,25 @@ import './Creatives.css'
 // the Corkboard layout itself. Remove the switcher (and whichever style
 // Cindy doesn't pick) once she's chosen a favorite.
 //
-// A third option, tilt + lift on hover, was tried and dropped: the
-// hover-lift reads as "this is clickable," which is misleading since
-// these cards don't do anything when clicked.
+// Two earlier rounds were tried and dropped:
+// - Tilt + lift on hover: the hover-lift reads as "this is clickable,"
+//   misleading since these cards don't do anything when clicked.
+// - Hand-drawn doodle / gentle sway: read as too cutesy/gimmicky, more
+//   "look at me" than "part of the board."
+//
+// This round goes for realism/depth instead of whimsy or motion --
+// both styles are static.
 const TITLE_STYLES = [
-  { id: 'doodle', label: 'A · Hand-drawn doodle' },
-  { id: 'breathe', label: 'B · Gentle sway' },
+  { id: 'curl', label: 'A · Paper curl' },
+  { id: 'layered', label: 'B · Layered depth' },
 ]
 
-// Small hand-drawn-feel sparkle, drawn to the same line-art spec as the
-// timeline's coffee icons (stroke-only, currentColor, rounded caps) so
-// it fits the site's existing icon language. Only used by style B.
-function DoodleSparkle(props) {
-  return (
-    <svg
-      width="26"
-      height="26"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M12 3c.4 3 1.6 5.8 4 7.5-2.4 1.7-3.6 4.5-4 7.5-.4-3-1.6-5.8-4-7.5 2.4-1.7 3.6-4.5 4-7.5z" />
-      <path d="M19 4.5c.2 1.1.7 2 1.6 2.7-.9.7-1.4 1.6-1.6 2.7-.2-1.1-.7-2-1.6-2.7.9-.7 1.4-1.6 1.6-2.7z" />
-    </svg>
-  )
-}
-
 export default function Creatives() {
-  const [titleStyle, setTitleStyle] = useState('doodle')
+  const [titleStyle, setTitleStyle] = useState('curl')
 
   return (
     <section>
-      {/* Temporary: lets Cindy compare the 3 title-card styles live and
+      {/* Temporary: lets Cindy compare the title-card styles live and
           pick one before this switcher gets removed. */}
       <div className="title-style-switcher">
         <span className="title-style-switcher-label">Title card style:</span>
@@ -70,9 +53,6 @@ export default function Creatives() {
           <div className={`corkboard-card corkboard-title-card corkboard-card--${titleStyle}`}>
             <span className="corkboard-tape corkboard-tape-left" aria-hidden="true" />
             <span className="corkboard-tape corkboard-tape-right" aria-hidden="true" />
-            {titleStyle === 'doodle' && (
-              <DoodleSparkle className="corkboard-doodle" aria-hidden="true" />
-            )}
             <h1>Creatives</h1>
             <p className="creatives-intro">A look at some of my art endeavors.</p>
             <p className="creatives-instructions">Click any piece to flip it over.</p>

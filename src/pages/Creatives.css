@@ -136,7 +136,7 @@
 }
 
 
-/* Temporary: comparison switcher for the 3 candidate title-card styles
+/* Temporary: comparison switcher for the candidate title-card styles
    (see Creatives.jsx). Reuses the same idle/active visual pattern as
    the site's other "compare before committing" switchers -- surface
    background idle, emphasis background + on-emphasis text when active.
@@ -175,41 +175,62 @@
   color: var(--color-on-emphasis);
 }
 
-/* Style A -- hand-drawn doodle: a small sparkle sketched near the
-   title card's corner, like a margin doodle. */
-.corkboard-doodle {
+/* Style A -- paper curl: a fine paper-fiber texture (finer/lower
+   opacity than the board's own cork speckle so the two don't compete)
+   plus a soft triangular shadow at one corner, like the card has
+   curled slightly with age/humidity. A very slight, fixed tilt --
+   no hover motion -- reads as "sits a little crooked," not
+   "interactive." */
+.corkboard-card--curl {
+  position: relative;
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--color-text) 55%, transparent) 0.5px, transparent 1px),
+    radial-gradient(circle, color-mix(in srgb, var(--color-text) 55%, transparent) 0.5px, transparent 1px);
+  background-size: 9px 9px, 13px 13px;
+  background-position: 0 0, 4px 6px;
+}
+
+.corkboard-card--curl.corkboard-title-card {
+  transform: rotate(-1deg);
+}
+
+.corkboard-card--curl.corkboard-matcha-card {
+  transform: rotate(1deg);
+}
+
+.corkboard-card--curl::after {
+  content: '';
   position: absolute;
-  top: -0.9rem;
-  right: 0.75rem;
-  color: var(--color-emphasis);
-  z-index: 2;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    color-mix(in srgb, var(--color-text) 20%, transparent) 50%
+  );
+  border-radius: 0 0 var(--radius-sm) 0;
+  pointer-events: none;
 }
 
-/* Style B -- gentle sway: a slow, continuous rock, staggered between
-   the two cards so they don't move in lockstep. Disabled for anyone
-   who prefers reduced motion. */
-@keyframes corkboard-sway {
-  0%,
-  100% {
-    transform: rotate(-1.2deg);
-  }
-  50% {
-    transform: rotate(1.2deg);
-  }
+/* Style B -- layered depth: a second, muted sheet peeks out from
+   behind the card at a rotated offset, like there's another note
+   pinned underneath it -- suggests the board has history without any
+   motion or added iconography. */
+.corkboard-card--layered {
+  position: relative;
+  z-index: 0;
 }
 
-.corkboard-card--breathe.corkboard-title-card {
-  animation: corkboard-sway 7s ease-in-out infinite;
-}
-
-.corkboard-card--breathe.corkboard-matcha-card {
-  animation: corkboard-sway 7s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .corkboard-card--breathe.corkboard-title-card,
-  .corkboard-card--breathe.corkboard-matcha-card {
-    animation: none;
-  }
+.corkboard-card--layered::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-4deg) translate(-6px, 5px);
+  z-index: -1;
+  opacity: 0.75;
 }
