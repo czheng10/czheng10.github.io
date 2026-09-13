@@ -1,27 +1,176 @@
 .contact {
-  padding: 2.5rem 0;
-}
-
-.contact a {
-  color: var(--color-emphasis);
-  font-weight: 600;
-}
-
-.contact-links {
-  margin-top: 1.5rem;
+  padding: 2.5rem 0 3.5rem;
   display: flex;
-  gap: 1rem;
+  justify-content: center;
 }
 
-.contact-links a {
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-lg);
-  background: var(--color-emphasis-soft);
+/* The receipt itself. Straight top/sides like a real slip; the "torn"
+   look lives entirely in ::after below rather than on the card's own
+   border-radius, so --radius-sm/md/lg stay untouched by a one-off
+   shape. */
+.order-slip {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  background: var(--color-emphasis-2);
+  color: var(--color-text);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  box-shadow: var(--shadow-soft);
+  padding: 2.25rem 1.85rem 1.75rem;
+}
+
+/* Zig-zag "torn paper" bottom edge: two diagonal gradients tiled
+   side-by-side create the classic receipt notch pattern. Colored to
+   match the slip so it reads as a cut edge against the page
+   background behind it. */
+.order-slip::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -13px;
+  height: 13px;
+  background:
+    linear-gradient(-45deg, var(--color-emphasis-2) 9px, transparent 0) 0 0 / 18px 18px,
+    linear-gradient(45deg, var(--color-emphasis-2) 9px, transparent 0) 0 0 / 18px 18px;
+  background-repeat: repeat-x;
+}
+
+.order-slip-header {
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.order-slip-eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  color: var(--color-text-soft);
+  margin-bottom: 0.4rem;
+}
+
+.order-slip-header h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.9rem;
+}
+
+.order-slip-sub {
+  margin: 0;
+  color: var(--color-text-soft);
+  font-size: 0.9rem;
+}
+
+.order-slip-divider {
+  border-top: 1px dashed var(--color-text-soft);
+  opacity: 0.55;
+  margin: 1.35rem 0;
+}
+
+.order-slip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.order-slip-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.order-slip-row-label {
+  font-size: 0.8rem;
+  color: var(--color-text-soft);
+}
+
+.order-slip-row-value {
+  font-weight: 600;
+  color: var(--color-emphasis);
   text-decoration: none;
-  transition: background var(--transition-fast);
+  word-break: break-word;
+  transition: color var(--transition-fast);
 }
 
-.contact-links a:hover {
+.order-slip-row-value:hover {
+  text-decoration: underline;
+}
+
+.order-slip-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+/* Icon buttons get the "satisfying press" via transform alone, reusing
+   the site's existing --transition-fast rather than introducing a new
+   duration/easing: a slight scale-and-tilt grow on hover, a quick
+   scale-down snap on press. */
+.order-slip-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-emphasis-soft);
+  color: var(--color-emphasis);
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.order-slip-icon-btn:hover,
+.order-slip-icon-btn:focus-visible {
   background: var(--color-emphasis);
   color: var(--color-on-emphasis);
+  transform: scale(1.14) rotate(-6deg);
+  box-shadow: var(--shadow-soft);
+}
+
+.order-slip-icon-btn:active {
+  transform: scale(0.88) rotate(0deg);
+  transition-duration: 90ms;
+}
+
+.order-slip-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.order-slip-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px dashed var(--color-text-soft);
+  opacity: 0.7;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+@media (max-width: 640px) {
+  .order-slip {
+    max-width: 100%;
+    padding: 2rem 1.35rem 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-slip-icon-btn {
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+  .order-slip-icon-btn:hover,
+  .order-slip-icon-btn:focus-visible,
+  .order-slip-icon-btn:active {
+    transform: none;
+  }
 }
