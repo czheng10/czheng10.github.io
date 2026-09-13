@@ -1,14 +1,15 @@
 import FlipCard from '../FlipCard.jsx'
-import './ConceptCorkboard.css'
+import './Corkboard.css'
 
-// A café-flavored cousin of the clothesline concept: instead of pieces
-// clipped to a line of twine, they're pinned to a corkboard -- the kind
-// of board an actual coffee shop has on its wall (flyers, event
-// notices, customer polaroids). Same tilted-paper, "pinned up" charm as
-// clothesline, but the prop itself is more on-theme for a café site.
-// Pins sit off-center (not aligned to any shared line), so there's no
-// line-alignment to get wrong the way the clothesline's clips did.
-export default function ConceptCorkboard({ pieces }) {
+// The Creatives page gallery: pieces pinned to a corkboard, the kind of
+// board an actual coffee shop has on its wall (flyers, event notices,
+// customer polaroids) -- picked after comparing it against a Pinterest
+// masonry grid, a line-art pottery shelf, a photo book, and an earlier
+// clothesline-and-twine version (see docs/INSPIRATION.md once that's
+// regenerated, and _to_delete/creatives-concepts/ for the losing
+// concepts' code). Pins sit off-center per piece rather than aligned to
+// a shared line, so there's no line-alignment to keep in sync.
+export default function Corkboard({ pieces }) {
   return (
     <div className="concept-corkboard">
       <div className="corkboard-items">
