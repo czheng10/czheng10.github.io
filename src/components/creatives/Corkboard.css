@@ -7,9 +7,15 @@
   gap: 3.5rem;
 }
 
+/* Grid, not flex-wrap: a row is always exactly --row-size columns.
+   Cards shrink together (down to 140px) to stay on one line rather
+   than wrapping -- with flex-wrap, a row of 4-5 fixed-190px cards
+   could overflow the board width and strand one card alone on a
+   second line, looking like an unintended small row in the middle
+   of the board. */
 .corkboard-items {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(var(--row-size, 3), minmax(140px, 190px));
   justify-content: center;
   align-items: flex-start;
   gap: 2.5rem 1.75rem;
@@ -17,7 +23,7 @@
 
 .corkboard-item {
   position: relative;
-  width: 190px;
+  width: 100%;
   transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0));
   transition: transform var(--transition-fast);
 }
@@ -51,6 +57,14 @@
 }
 
 @media (max-width: 640px) {
+  /* Screen is too narrow for a full 3-5 card row even at the minimum
+     card width -- fall back to a plain wrapping flex grid instead of
+     forcing the row's card count onto one line. */
+  .corkboard-items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   .corkboard-item {
     width: 46vw;
     max-width: 190px;

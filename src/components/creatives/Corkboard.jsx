@@ -37,7 +37,7 @@ export default function Corkboard({ pieces }) {
   return (
     <div className="corkboard-board-items">
       {rows.map((row, r) => (
-        <div className="corkboard-items" key={r}>
+        <div className="corkboard-items" key={r} style={{ '--row-size': row.length }}>
           {row.map((piece, i) => {
             const tilt = (i % 2 === 0 ? -1 : 1) * (2 + (i % 4))
             const lift = i % 3 === 1 ? '0.75rem' : i % 3 === 2 ? '-0.5rem' : '0rem'
