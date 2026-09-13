@@ -10,7 +10,7 @@ export const menuData = [
   {
     to: '/creatives',
     label: 'Iced Matcha Latte',
-    description: 'Earthy, creative, quietly bold — my artistic sidequests.',
+    description: 'Earthy, creative, quietly bold — my artistic side quests.',
   },
   {
     to: '/about',
