@@ -1,0 +1,66 @@
+/* Board background: a computed blend of two existing palette tokens
+   (emphasis-2 + text) via color-mix, not a new raw color -- stays
+   inside the site's four-color rule while reading as a warmer, darker
+   cork tone than either token alone. The speckle layers reuse the ink
+   color at low effective opacity (via radial-gradient's transparent
+   stop) to suggest cork texture without an actual image asset. */
+.concept-corkboard {
+  background: color-mix(in srgb, var(--color-emphasis-2) 65%, var(--color-text) 20%);
+  background-image:
+    radial-gradient(circle, var(--color-text) 1px, transparent 1.6px),
+    radial-gradient(circle, var(--color-text) 1px, transparent 1.6px),
+    radial-gradient(circle, var(--color-text) 1px, transparent 1.6px);
+  background-size: 42px 42px, 67px 67px, 89px 89px;
+  background-position: 0 0, 18px 30px, 45px 8px;
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.corkboard-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem 1.5rem;
+}
+
+.corkboard-item {
+  position: relative;
+  width: 150px;
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0));
+  transition: transform var(--transition-fast);
+}
+
+.corkboard-item:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+.corkboard-pin {
+  position: absolute;
+  top: -0.4rem;
+  left: 1.1rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-emphasis);
+  box-shadow: var(--shadow-soft);
+  z-index: 2;
+}
+
+/* Same cream polaroid-style frame as the pinterest/clothesline
+   concepts, so all three read as one design language. */
+.corkboard-photo {
+  box-sizing: border-box;
+  background: var(--color-emphasis-2);
+  padding: 0.5rem 0.5rem 1.5rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+}
+
+@media (max-width: 640px) {
+  .corkboard-item {
+    width: 42vw;
+    max-width: 160px;
+  }
+}

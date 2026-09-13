@@ -5,18 +5,23 @@ import ConceptPinterest from '../components/creatives/ConceptPinterest.jsx'
 import ConceptShelf from '../components/creatives/ConceptShelf.jsx'
 import ConceptPhotobook from '../components/creatives/ConceptPhotobook.jsx'
 import ConceptClothesline from '../components/creatives/ConceptClothesline.jsx'
+import ConceptCorkboard from '../components/creatives/ConceptCorkboard.jsx'
 import './Creatives.css'
 
-// TEMPORARY: a side-by-side comparison switcher for the 4 layout
-// concepts Cindy asked to see before picking one (same pattern used for
-// the landing-page ambience comparison — see docs/INSPIRATION.md).
-// Once she decides, delete this switcher and keep only the winning
-// concept's component + CSS.
+// TEMPORARY: a side-by-side comparison switcher for the Creatives page
+// layout concepts (same pattern used for the landing-page ambience
+// comparison — see docs/INSPIRATION.md). Cindy narrowed the original 4
+// down to Pinterest tiles vs. Clothesline, then asked for a more
+// café-themed cousin of Clothesline — Corkboard swaps the twine +
+// clothespin for a corkboard + pushpin (a prop you'd actually find on a
+// coffee shop wall), keeping the same tilted, pinned-up charm. Once she
+// decides, delete this switcher and keep only the winning concept.
 const CONCEPTS = [
   { id: 'pinterest', label: '1 · Pinterest tiles', Component: ConceptPinterest },
   { id: 'shelf', label: '2 · Pottery shelf', Component: ConceptShelf },
   { id: 'photobook', label: '3 · Photo book', Component: ConceptPhotobook },
-  { id: 'clothesline', label: '4 · Clothesline (original idea)', Component: ConceptClothesline },
+  { id: 'clothesline', label: '4 · Clothesline', Component: ConceptClothesline },
+  { id: 'corkboard', label: '5 · Corkboard (café take on 4)', Component: ConceptCorkboard },
 ]
 
 export default function Creatives() {
