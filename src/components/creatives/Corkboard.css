@@ -1,14 +1,23 @@
+/* Row-groups (random size, see Corkboard.jsx) get more breathing room
+   between each other than pieces get within one, so the page reads as
+   loose clusters instead of one continuous wrapping grid. */
+.corkboard-board-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
 .corkboard-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 2.5rem 1.5rem;
+  gap: 2.5rem 1.75rem;
 }
 
 .corkboard-item {
   position: relative;
-  width: 150px;
+  width: 190px;
   transform: rotate(var(--tilt, 0deg)) translateY(var(--lift, 0));
   transition: transform var(--transition-fast);
 }
@@ -22,18 +31,17 @@
    pinned = art piece, taped = page chrome. */
 .corkboard-pin {
   position: absolute;
-  top: -0.4rem;
-  left: 1.1rem;
-  width: 14px;
-  height: 14px;
+  top: -0.45rem;
+  left: 1.2rem;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: var(--color-emphasis);
   box-shadow: var(--shadow-soft);
   z-index: 2;
 }
 
-/* Cream polaroid-style frame, same as the other concepts that were
-   compared against this one. */
+/* Cream polaroid-style frame, same as the taped title/matcha cards. */
 .corkboard-photo {
   box-sizing: border-box;
   background: var(--color-emphasis-2);
@@ -44,7 +52,7 @@
 
 @media (max-width: 640px) {
   .corkboard-item {
-    width: 42vw;
-    max-width: 160px;
+    width: 46vw;
+    max-width: 190px;
   }
 }
