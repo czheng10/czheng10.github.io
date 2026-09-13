@@ -13,7 +13,11 @@
   background-size: 42px 42px, 67px 67px, 89px 89px;
   background-position: 0 0, 18px 30px, 45px 8px;
   border-radius: var(--radius-lg);
-  padding: 2.5rem 1.5rem 1.5rem;
+  /* Generous, roughly even padding on every side so pinned pieces read
+     as framed by the board rather than crowding its edges. Bottom gets
+     a bit extra to clear the downward `--lift` offset some items get
+     (see .corkboard-item) plus the item's own drop shadow. */
+  padding: 2.5rem 2rem 3rem;
   box-shadow: var(--shadow-soft);
 }
 
@@ -22,7 +26,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 2rem 1.5rem;
+  gap: 2.5rem 1.5rem;
 }
 
 .corkboard-item {
