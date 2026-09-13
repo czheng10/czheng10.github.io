@@ -1,6 +1,13 @@
 .concept-clothesline {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.clothesline-row {
   position: relative;
-  padding-top: 2.5rem;
+  /* leaves room above each item for its clip to straddle the wire below */
+  padding-top: 1.75rem;
 }
 
 .clothesline-wire {
@@ -32,9 +39,13 @@
   transform: rotate(0deg) translateY(-4px);
 }
 
+/* Straddles the wire: the item's own top edge sits at the row's
+   1.75rem/28px mark (same offset as .clothesline-wire's `top`), so a
+   clip half-above/half-below that edge visually pinches the line
+   instead of floating below it. */
 .clothesline-clip {
   position: absolute;
-  top: -0.6rem;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 14px;

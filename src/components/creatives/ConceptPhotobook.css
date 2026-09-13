@@ -16,26 +16,28 @@
 .photobook-page-wrap {
   flex: 1;
   min-width: 0;
-  perspective: 1400px;
 }
 
+/* A plain fade + slide, deliberately not a 3D rotateY page-turn: an
+   actual rotation warps/skews the photo itself as it turns, which read
+   as the image distorting rather than a page changing. This animates
+   only opacity + position, so the photo stays undistorted. */
 .photobook-page-card {
   width: 100%;
   box-sizing: border-box;
   border-radius: 4px var(--radius-lg) var(--radius-lg) 4px;
   box-shadow: -6px 0 0 var(--color-emphasis-2), var(--shadow-soft);
-  transform-origin: left center;
-  animation: page-turn var(--transition-slow);
+  animation: page-swap var(--transition-slow);
 }
 
-@keyframes page-turn {
+@keyframes page-swap {
   from {
-    transform: rotateY(-70deg);
-    opacity: 0.4;
+    opacity: 0;
+    transform: translateX(10px);
   }
   to {
-    transform: rotateY(0deg);
     opacity: 1;
+    transform: translateX(0);
   }
 }
 
