@@ -13,6 +13,12 @@
   position: relative;
   width: 100%;
   max-width: 360px;
-  height: 640px;
+  /* Height now scales down on short/unmaximized windows instead of
+     staying a fixed 640px -- without this, a window shorter than
+     ~700px (640px card + 2rem padding top/bottom) left the card
+     filling almost the entire viewport with barely any breathing
+     room above/below, reading as "zoomed in" even though it was
+     rendering at the exact right pixel size. */
+  height: min(640px, 78vh);
   z-index: 1;
 }
