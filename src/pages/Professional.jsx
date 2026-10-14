@@ -10,8 +10,7 @@ export default function Professional() {
         <div className="hero-text">
           <h1>The Career</h1>
           <p className="hero-subtitle">
-            Placeholder intro line — replace with a real one-liner about
-            what you do and care about.
+            Software engineer, brewed one line of code at a time.
           </p>
         </div>
         <img

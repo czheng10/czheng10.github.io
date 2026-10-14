@@ -1,8 +1,9 @@
 import { contactLinks } from '../data/contactData.js'
-import { Mail, LinkedIn, Instagram, GitHub } from '../components/icons/ContactIcons.jsx'
+import { Mail, LinkedIn, Instagram } from '../components/icons/ContactIcons.jsx'
+import LandingArt from '../components/LandingArt.jsx'
 import './Contact.css'
 
-const iconMap = { mail: Mail, linkedin: LinkedIn, instagram: Instagram, github: GitHub }
+const iconMap = { mail: Mail, linkedin: LinkedIn, instagram: Instagram }
 
 // Contact re-imagined as the café's "order slip" rather than a plain
 // list of links — the same walking-into-a-café metaphor the rest of
@@ -14,6 +15,11 @@ const iconMap = { mail: Mail, linkedin: LinkedIn, instagram: Instagram, github: 
 export default function Contact() {
   return (
     <section className="contact">
+      {/* Zoomed into the chalkboard menu on the back wall -- fitting
+          backdrop for an "order slip" page, and a different detail of
+          the same landing-page illustration rather than a repeat. */}
+      <LandingArt className="contact-page-art" focus="97% 46%" zoom={1.8} peakOpacity={0.28} />
+
       <div className="order-slip">
         <div className="order-slip-header">
           <span className="order-slip-eyebrow">Order Slip</span>

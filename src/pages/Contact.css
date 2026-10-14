@@ -1,13 +1,27 @@
 .contact {
+  position: relative;
   padding: 2.5rem 0 3.5rem;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-page-art.landing-art-wrap {
+  inset: 0 auto;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
 }
 
 /* The receipt itself. Straight top/sides like a real slip; the "torn"
    look lives entirely in ::after below rather than on the card's own
    border-radius, so --radius-sm/md/lg stay untouched by a one-off
-   shape. */
+   shape. Animates in like paper feeding out of a receipt printer: a
+   clip-path wipe reveals it top-to-bottom on mount. The end state
+   clips 20px *below* the box rather than at 0, so the torn ::after
+   edge (which sits at bottom: -13px, outside the box) never itself
+   gets clipped off once the animation settles. */
 .order-slip {
   position: relative;
   width: 100%;
@@ -15,8 +29,26 @@
   background: var(--color-emphasis-2);
   color: var(--color-text);
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  box-shadow: var(--shadow-soft);
+  /* filter, not box-shadow: box-shadow would only outline this
+     element's own rectangular box, leaving a visible seam/shadow-line
+     right above the torn ::after edge below (which sits outside this
+     box). filter: drop-shadow() instead shadows the full painted
+     result -- rectangle + jagged edge together -- as one shape, so the
+     body and the torn edge read as a single piece of paper. */
+  filter: var(--shadow-soft-filter);
   padding: 2.25rem 1.85rem 1.75rem;
+  animation: order-slip-unravel 1250ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes order-slip-unravel {
+  from {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 -20px 0);
+    opacity: 1;
+  }
 }
 
 /* Zig-zag "torn paper" bottom edge: two diagonal gradients tiled
@@ -165,6 +197,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .order-slip {
+    animation: none;
+  }
+
   .order-slip-icon-btn {
     transition: background var(--transition-fast), color var(--transition-fast);
   }

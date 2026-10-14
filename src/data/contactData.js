@@ -16,7 +16,7 @@ export const contactLinks = [
     id: 'linkedin',
     icon: 'linkedin',
     label: 'LinkedIn',
-    value: '@cindynzheng',
+    value: 'linkedin.com/in/cindynzheng',
     href: 'https://www.linkedin.com/in/cindynzheng/',
     note: 'Best way to reach me professionally',
   },
@@ -27,13 +27,5 @@ export const contactLinks = [
     value: '@cindynzheng',
     href: 'https://www.instagram.com/cindynzheng/',
     note: "Want to see what else I'm up to?",
-  },
-  {
-    id: 'github',
-    icon: 'github',
-    label: 'GitHub',
-    value: 'czheng10',
-    href: 'https://github.com/czheng10',
-    note: 'Where the code for this site lives',
   },
 ]

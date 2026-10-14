@@ -1,0 +1,30 @@
+/* Shared ambient background art: breathe (opacity) + parallax
+   (transform, set inline per-instance from LandingArt.jsx) layered
+   together. Lives alongside the component (not a page's own CSS file)
+   since it's now reused as the backdrop on several pages, each one
+   framing a different part of the same café illustration. */
+
+.landing-art-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.landing-art-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease-out;
+  animation: amb-breathe 6s ease-in-out infinite;
+}
+
+/* Peak opacity is a custom property (default matches the landing
+   page's original intensity) so quieter pages behind real content
+   (Creatives, Contact) can dial the breathe down without forking the
+   whole animation. */
+@keyframes amb-breathe {
+  0%, 100% { opacity: 0.18; }
+  50% { opacity: var(--art-peak-opacity, 0.56); }
+}

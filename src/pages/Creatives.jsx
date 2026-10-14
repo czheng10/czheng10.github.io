@@ -1,11 +1,18 @@
 import { creativesData } from '../data/creativesData.js'
 import matchaLatte from '../assets/matcha-latte-icon.png'
 import Corkboard from '../components/creatives/Corkboard.jsx'
+import LandingArt from '../components/LandingArt.jsx'
 import './Creatives.css'
 
 export default function Creatives() {
   return (
-    <section>
+    <section className="creatives-page">
+      {/* Zoomed into the open shelf of cups, bowls and a pitcher --
+          the same café line art as the landing page, framed on its
+          ceramics so it echoes the pottery below rather than repeating
+          the landing page's full-room crop. */}
+      <LandingArt className="creatives-page-art" focus="74% 26%" zoom={2.4} peakOpacity={0.28} />
+
       {/* The whole page is one continuous corkboard: the title + intro
           and the matcha icon are "taped" cards (page chrome), the art
           pieces below are "pinned" (see Corkboard.jsx) -- tape vs. pin
@@ -16,8 +23,8 @@ export default function Creatives() {
             <span className="corkboard-tape corkboard-tape-left" aria-hidden="true" />
             <span className="corkboard-tape corkboard-tape-right" aria-hidden="true" />
             <h1>Creatives</h1>
-            <p className="creatives-intro">A look at some of my art endeavors.</p>
-            <p className="creatives-instructions">Click any piece to flip it over.</p>
+            <p className="creatives-intro">Made with care.</p>
+            <p className="creatives-instructions">Click a piece to see it up close, click again to flip it over.</p>
           </div>
 
           <div className="corkboard-card corkboard-matcha-card">

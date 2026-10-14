@@ -18,7 +18,14 @@
 // list, since a one-word "bullet" looked silly.
 export const timelineData = [
   {
-    date: 'Aug 2025 — Present',
+    date: 'Nov 2026',
+    header: 'Private Firm - Software Developer',
+    subheader: 'New York, NY',
+    type: 'work',
+    bullets: ['Coming soon!'],
+  },
+  {
+    date: 'Aug 2025 — Oct 2026',
     header: 'LinkedIn - Software Engineer',
     subheader: 'Marketing Technology Engineering, New York, NY',
     type: 'work',

@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import FlipCard from '../FlipCard.jsx'
 import './Corkboard.css'
 
@@ -33,6 +33,44 @@ function groupIntoRows(list) {
 
 export default function Corkboard({ pieces }) {
   const rows = useMemo(() => groupIntoRows(pieces), [pieces])
+  const [expandedId, setExpandedId] = useState(null)
+  const lastTriggerRef = useRef(null)
+  const closeButtonRef = useRef(null)
+  const expandedPiece = pieces.find((piece) => piece.id === expandedId) ?? null
+
+  function openPiece(piece, triggerEl) {
+    lastTriggerRef.current = triggerEl
+    setExpandedId(piece.id)
+  }
+
+  function closeLightbox() {
+    setExpandedId(null)
+  }
+
+  // Small pinned photos are too tiny to hold a full caption legibly --
+  // clicking one opens a centered, much larger lightbox instead of
+  // flipping in place. The lightbox itself reuses FlipCard so a second
+  // click (on the now-readable enlarged card) flips to the full info,
+  // same mechanic as before, just promoted to a size where it's
+  // actually legible.
+  useEffect(() => {
+    if (!expandedPiece) return
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') closeLightbox()
+    }
+    document.addEventListener('keydown', onKeyDown)
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    closeButtonRef.current?.focus()
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = previousOverflow
+      lastTriggerRef.current?.focus()
+    }
+  }, [expandedPiece])
 
   return (
     <div className="corkboard-board-items">
@@ -48,17 +86,54 @@ export default function Corkboard({ pieces }) {
                 style={{ '--tilt': `${tilt}deg`, '--lift': lift }}
               >
                 <span className="corkboard-pin" aria-hidden="true" />
-                <div
-                  className="corkboard-photo"
-                  style={{ aspectRatio: `${piece.width} / ${piece.height}` }}
+                <button
+                  type="button"
+                  className="corkboard-photo-trigger"
+                  onClick={(event) => openPiece(piece, event.currentTarget)}
+                  aria-label={`${piece.alt} — click to view larger`}
                 >
-                  <FlipCard {...piece} />
-                </div>
+                  <span
+                    className="corkboard-photo"
+                    style={{ aspectRatio: `${piece.width} / ${piece.height}` }}
+                  >
+                    <img src={piece.image} alt="" />
+                  </span>
+                </button>
               </div>
             )
           })}
         </div>
       ))}
+
+      {expandedPiece && (
+        <div
+          className="corkboard-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={expandedPiece.title}
+          onClick={closeLightbox}
+        >
+          <div
+            className="corkboard-lightbox-card"
+            style={{
+              '--ar': `${expandedPiece.width} / ${expandedPiece.height}`,
+              '--ar-num': expandedPiece.width / expandedPiece.height,
+            }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <FlipCard {...expandedPiece} />
+          </div>
+          <button
+            type="button"
+            ref={closeButtonRef}
+            className="corkboard-lightbox-close"
+            onClick={closeLightbox}
+            aria-label="Close larger view"
+          >
+            ×
+          </button>
+        </div>
+      )}
     </div>
   )
 }

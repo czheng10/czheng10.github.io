@@ -2,36 +2,132 @@
   padding: 2.5rem 0;
 }
 
-.about-body {
-  max-width: 60ch;
+/* Two columns: a big, its-own-column photo on the left, and the
+   greeting/story text on the right -- rather than a small photo
+   floated inline beside the first paragraph. */
+.about-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1040px;
   margin: 0 auto;
-  overflow: hidden; /* creates a clean clearfix for the floated images */
+  padding: 0 1.5rem;
 }
 
-.about-body p {
+.about-text-col {
+  flex: 1;
+  min-width: 0;
+  max-width: 56ch;
+  overflow: hidden; /* clearfix for the floated bag icon below */
+}
+
+.about-text-col p {
   line-height: 1.6;
   color: var(--color-text-soft);
 }
 
+/* The real photo -- now its own big column, framed in the same cream
+   "polaroid" card the Creatives page uses for pinned photos and
+   FlipCard (see .corkboard-photo in Corkboard.css / .flip-card-face in
+   FlipCard.css), right down to the thicker bottom padding that gives
+   it that polaroid look. A slight tilt plus a little lift on hover,
+   like the corkboard pieces, ties it visually to that page too. */
+.about-photo-col {
+  flex: 0 0 340px;
+}
+
+.about-photo-flip {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  aspect-ratio: 694 / 1038;
+  perspective: 1200px;
+  transition: transform var(--transition-fast);
+}
+
+.about-photo-flip:hover {
+  transform: translateY(-4px);
+}
+
+.about-photo-flip-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-slow);
+  transform-style: preserve-3d;
+}
+
+.about-photo-flip.is-flipped .about-photo-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.about-photo-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  background: var(--color-emphasis-2);
+  padding: 0.75rem 0.75rem 2.5rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: calc(var(--radius-sm) - 2px);
+}
+
+/* Caption side: plain cream card background behind the caption text. */
+.about-photo-flip-back {
+  transform: rotateY(180deg);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.about-photo-back-text {
+  position: relative;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.about-photo-flip:focus-visible .about-photo-flip-inner {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
 /* Small accent illustration tying the page back to its landing-menu
    drink (The House Blend here, Iced Oat Vanilla Latte on Career, Iced
-   Matcha Latte on Creatives). Floated beside the opening lines rather
-   than placed in its own row, so the greeting/subheader read as part
-   of the same block as the rest of the bio instead of being split off
-   from it. */
+   Matcha Latte on Creatives). Floats beside the "off the clock" coffee
+   -daydream paragraph lower down the page. clear: right forces it to
+   stack below the photo above rather than risk sitting side-by-side
+   with it if there's horizontal room left over. */
 .about-bag-icon {
   float: right;
-  width: 200px;
+  width: 180px;
   height: auto;
   margin: 0 0 1.25rem 1.75rem;
   shape-outside: margin-box;
 }
 
+/* Sits under the photo card now, like a handwritten polaroid caption,
+   rather than leading the text column. */
 .about-greeting {
   font-family: var(--font-display);
   font-size: 1.15rem;
   color: var(--color-text);
-  margin: 0 0 0.75rem;
+  margin: 0.85rem 0 0;
+  text-align: center;
 }
 
 .about-subheader {
@@ -43,21 +139,22 @@
   line-height: 1.3;
 }
 
-/* Also floated (stacked in the same right-hand margin, right under the
-   bag icon via clear: right) rather than sitting as its own full-width
-   block — that was still splitting the greeting/subheader from the
-   paragraphs into visually separate chunks. This way the text (greeting
-   -> subheader -> both paragraphs -> signoff) reads as one continuous
-   column the whole way down, with both images as side accents instead
-   of interruptions. */
-.about-photo {
-  float: right;
-  clear: right;
-  width: 200px;
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  margin: 0 0 1.5rem 1.75rem;
+@media (max-width: 760px) {
+  .about-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .about-photo-col {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .about-text-col {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -67,14 +164,12 @@
     width: 140px;
     margin: 0 auto 1.5rem;
   }
+}
 
-  .about-photo {
-    float: none;
-    clear: none;
-    display: block;
-    width: 100%;
-    max-width: 280px;
-    margin: 0 0 1.75rem;
+@media (prefers-reduced-motion: reduce) {
+  .about-photo-flip,
+  .about-photo-flip-inner {
+    transition: none;
   }
 }
 

@@ -21,6 +21,13 @@
   --blob-radius: 62% 38% 53% 47% / 45% 55% 45% 55%;
   --blob-radius-alt: 40% 60% 45% 55% / 55% 45% 62% 38%;
   --shadow-soft: 0 8px 24px rgba(30, 34, 37, 0.18);
+  /* Same values as --shadow-soft, as a filter instead of a box-shadow --
+     needed wherever a shape is built from more than one box (e.g. the
+     receipt's torn-edge pseudo-element sitting outside its parent's
+     box) so the shadow traces the *combined* silhouette as one piece
+     of paper, instead of each box casting its own separate shadow with
+     a visible seam between them. */
+  --shadow-soft-filter: drop-shadow(0 8px 24px rgba(30, 34, 37, 0.18));
 
   /* Shared timing so every transition in the site feels consistent */
   --transition-fast: 180ms ease;
@@ -44,6 +51,12 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
+  /* The Creatives/Contact page backgrounds break out of their centered
+     max-width column to go full-bleed (100vw) -- which can round up to
+     a hair wider than the visible viewport once a scrollbar is
+     present. Clip it here rather than letting it introduce its own
+     horizontal scrollbar. */
+  overflow-x: hidden;
 }
 
 h1, h2, h3, .font-display {
@@ -67,6 +80,17 @@ a {
   max-width: 960px;
   margin: 0 auto;
   padding: 2rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each route renders a single top-level element here -- stretch it to
+   fill the remaining viewport height (rather than shrink-wrapping its
+   own content) so page-level background treatments like LandingArt's
+   ambient café line art reach all the way to the bottom of the page,
+   not just as far as the content happens to run. */
+.site-main > * {
+  flex: 1;
 }
 
 .site-main-landing {

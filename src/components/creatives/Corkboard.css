@@ -47,13 +47,110 @@
   z-index: 2;
 }
 
+/* Small pinned photos just open the lightbox now -- they're too tiny
+   to hold a legible caption, so the flip interaction lives there
+   instead (see .corkboard-lightbox-card below). */
+.corkboard-photo-trigger {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 /* Cream polaroid-style frame, same as the taped title/matcha cards. */
 .corkboard-photo {
+  display: block;
   box-sizing: border-box;
   background: var(--color-emphasis-2);
   padding: 0.5rem 0.5rem 1.5rem;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-soft);
+}
+
+.corkboard-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.corkboard-photo-trigger:focus-visible .corkboard-photo {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+/* The enlarged view: a centered, much bigger version of whatever was
+   clicked, dimming the board behind it. Reuses FlipCard so a second
+   click on the now-legible card flips it to the full caption. */
+.corkboard-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  background: color-mix(in srgb, var(--color-text) 55%, transparent);
+  animation: corkboard-lightbox-fade var(--transition-fast) ease both;
+}
+
+@keyframes corkboard-lightbox-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.corkboard-lightbox-card {
+  position: relative;
+  /* Solve for the largest box that fits both the width cap and the
+     height cap while keeping the piece's real aspect ratio: width is
+     the smallest of "90vw", "480px", and "(max allowed height) * ratio"
+     -- that last term guarantees height never exceeds its own cap. */
+  --lightbox-max-h: min(85vh, 640px);
+  width: min(90vw, 480px, calc(var(--lightbox-max-h) * var(--ar-num)));
+  aspect-ratio: var(--ar);
+  animation: corkboard-lightbox-pop var(--transition-slow);
+}
+
+@keyframes corkboard-lightbox-pop {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.corkboard-lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-emphasis-2);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast);
+}
+
+.corkboard-lightbox-close:hover,
+.corkboard-lightbox-close:focus-visible {
+  transform: scale(1.1);
 }
 
 @media (max-width: 640px) {
@@ -68,5 +165,12 @@
   .corkboard-item {
     width: 46vw;
     max-width: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corkboard-lightbox,
+  .corkboard-lightbox-card {
+    animation: none;
   }
 }

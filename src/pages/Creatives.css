@@ -1,3 +1,22 @@
+/* Page wrapper: gives the absolutely-positioned ambient art (see
+   LandingArt.jsx) something to anchor to, and keeps it clipped to this
+   page rather than bleeding into the nav/footer. The opaque cork board
+   below sits above it in normal stacking order (painted later in
+   document order), so the art only peeks through the margins around
+   the board and the footer CTA -- it's not meant to compete with the
+   board's own texture. */
+.creatives-page {
+  position: relative;
+}
+
+.creatives-page-art.landing-art-wrap {
+  inset: 0 auto;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
 /* The board: background is a color-mix() of two existing palette
    tokens (emphasis-2 + text), not a new raw color -- stays inside the
    site's four-color rule (see docs/DESIGN.md) rather than introducing a
@@ -16,7 +35,7 @@
   background-position: 0 0, 18px 30px, 45px 8px;
   border-radius: var(--radius-lg);
   padding: 2.5rem 2rem 3rem;
-  margin-top: 2rem;
+  margin: 2rem 1.25rem 3rem;
   box-shadow: var(--shadow-soft);
 }
 
