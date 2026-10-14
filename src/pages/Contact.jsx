@@ -1,6 +1,7 @@
 import { contactLinks } from '../data/contactData.js'
 import { Mail, LinkedIn, Instagram } from '../components/icons/ContactIcons.jsx'
 import LandingArt from '../components/LandingArt.jsx'
+import Logo from '../components/Logo.jsx'
 import './Contact.css'
 
 const iconMap = { mail: Mail, linkedin: LinkedIn, instagram: Instagram }
@@ -22,6 +23,7 @@ export default function Contact() {
 
       <div className="order-slip">
         <div className="order-slip-header">
+          <Logo className="order-slip-logo" />
           <span className="order-slip-eyebrow">Order Slip</span>
           <h1 className="font-display">Say Hello</h1>
           <p className="order-slip-sub">One order, a few ways to pick it up.</p>

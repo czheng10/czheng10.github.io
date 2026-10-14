@@ -92,6 +92,9 @@
   box-shadow: var(--shadow-soft);
   padding: 1.25rem 1.5rem;
   text-align: left;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 .timeline-meta {

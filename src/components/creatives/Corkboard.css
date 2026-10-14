@@ -15,7 +15,16 @@
    of the board. */
 .corkboard-items {
   display: grid;
-  grid-template-columns: repeat(var(--row-size, 3), minmax(140px, 190px));
+  /* The lower bound is normally 140px, but on a narrow/tablet-width
+     board a full 5-column row at 140px-each plus gaps can be wider
+     than the container -- min() caps that lower bound to whatever
+     share of the actual available width each column has, so the row
+     can only ever shrink to fit rather than force the board to
+     overflow horizontally. */
+  grid-template-columns: repeat(
+    var(--row-size, 3),
+    minmax(min(140px, calc((100% - (var(--row-size, 3) - 1) * 1.75rem) / var(--row-size, 3))), 190px)
+  );
   justify-content: center;
   align-items: flex-start;
   gap: 2.5rem 1.75rem;
